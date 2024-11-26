@@ -9,7 +9,7 @@ pip install -r requirements.txt # install the requirements
 ```
 
 * Setup Flask for the Virtual environment 
-> create .flaskenv file in the root repository (write following commands)
+`#0969DA`> create .flaskenv file in the root repository (write following commands)
 ```
 FLASK_APP=app.py # main flask application 
 FLASK_ENV=development
