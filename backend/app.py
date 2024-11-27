@@ -23,5 +23,9 @@ with app.app_context():
 def hello():
   return jsonify({'':'Hello'})
 
+#import common routes 
+import common_routes
+import ivm6311_routes
+
 if __name__ == "__main__":
   app.run(debug=True)
