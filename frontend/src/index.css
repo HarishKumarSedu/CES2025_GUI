@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --blue : #8B5CF6;
+    --light-blue : #3B82F6;
+    --pink : #EC4899;
+    --green : #10B981;
+    --light-green : #6EE7B7;
+    --light-inventvm-color : #F59E0B;
+    --inventvm-color : #D05B1C;
+  }
