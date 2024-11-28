@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   Cpu,
   BarChart2,
   BrainCircuit,
   NotebookText,
   CircuitBoard,
+  Axis3D,
 } from "lucide-react";
 import Header from "./Header";
 import { motion } from "framer-motion";
@@ -12,6 +13,7 @@ import StatCard from "./ivm6311/StatCard";
 import Ivm6311Config from "./ivm6311/Ivm6311Config";
 
 const IVM6311 = () => {
+
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="IVM6311" color="text-custom-inventvm-color" icon={Cpu} />

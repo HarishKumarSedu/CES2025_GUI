@@ -8,6 +8,10 @@ import IVM6310 from './components/IVM6310'
 import About from './components/About'
 import Setting from './components/Setting'
 
+// updated this after recording. Make sure you do the same so that it can work in production
+export const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "";
+// export const BASE_URL = 'http://localhost:5000';
+
 const App = () => {
   return (
     <div className="flex h-screen bg-gray-900 text-gray-50 overflow-hidden">

@@ -6,6 +6,7 @@ from common import read_yaml
 from pathlib import Path 
 import EasyMCP2221
 from logger import log
+from time import sleep
 
 DEVICE = read_yaml(Path('config/DeviceAddress.yaml'))
 
@@ -20,8 +21,8 @@ def sweep_devices():
                 log.error(f'Deviceses are not found : {adresses}')
                 return jsonify({'error':{'Not Found' : adresses}}),500
         else:
-            log.error(f'Deviceses are not found : {DEVICE.I2C}')
-            return jsonify({'error':{'Not Found' : DEVICE.I2C}}),200
+            log.debug(f'Deviceses are found Successfully: {DEVICE.I2C}')
+            return jsonify({'success':{'Deviceses are found Successfully' : DEVICE.I2C}}),200
     else:
         log.error(f'MCP not Connected')
         return jsonify({'error':'MCP not Connected'}),500
@@ -31,6 +32,7 @@ def slaves(device=None):
     for addr in DEVICE.I2C.values():
         try:
             device.I2C_read(addr)
+            sleep(0.01)
         except EasyMCP2221.exceptions.NotAckError:
             adresses.append(addr)
             pass

@@ -22,6 +22,7 @@ def setPot_resistance__value():
     if device:
         try :
             data = request.json
+            print(data)
             potaddr = int(data.get('potAddr'),16)
             adcaddr = int(data.get('adcAddr'),16)
             potvalue = int(data.get('value'),16)
@@ -43,9 +44,8 @@ def bus_Voltage(device=None,addr=0x29):
         Vsense_MSB = int.from_bytes(BoostADC.read_register(0x11),'little') # LSB of the ADC value 
         FSV = (40 - 40/2047) 
         Vsense = ((Vsense_MSB << 8 ) | Vsense_LSB) >> 5 
-        Vbus = FSV*Vsense / 2047
-        log.info(f'ADC Vbus {Vbus}V')
-        return jsonify({'successful':{'adc':Vbus}}),200
+        Vbus = round(FSV*Vsense / 2047,2)
+        return Vbus
     except EasyMCP2221.exceptions.NotAckError as e:
         log.error(f'Device Not Found {addr}')
         return jsonify({'error':f'Device Not Found {addr}'}),500
@@ -55,8 +55,9 @@ def bus_Voltage(device=None,addr=0x29):
 def get_adcVbus__Voltage(addr):
     device = get_device()
     if device:
-        print(addr)
-        return bus_Voltage(device=device,addr=addr)
+        Vbus = bus_Voltage(device=device,addr=addr)
+        log.info(f'ADC {addr} Vbus {Vbus}V')
+        return jsonify({'success':{'adc':Vbus}}),200
     else:
         log.error(f'MCP not Connected')
         return jsonify({'error':'MCP not Connected'}),500
@@ -87,7 +88,7 @@ def powerup_script():
                 with open('scripts/powerup.csv','w') as file :
                     data = pd.read_csv(StringIO(data),sep=';',index_col=False).to_csv(file)
                     log.info('Powerup Script uploaded sucessfully')
-            return jsonify({'successful':'Powerup Script uploaded sucessfully'}),200
+            return jsonify({'success':'Powerup Script uploaded sucessfully'}),200
         except Exception as e:
             log.info(f'Powerup Script not uploaded in server : {e}')
             return jsonify({'error':'Powerup Script not uploaded in server'}),500
@@ -127,7 +128,7 @@ def powerdown_script():
                     pd.read_csv(StringIO(data),sep=';',index_col=False).to_csv(file)
                 log.warning('No selected file')
 
-                return jsonify({'successful':'Powerdown Script uploaded sucessfully'}),200
+                return jsonify({'success':'Powerdown Script uploaded sucessfully'}),200
         except Exception as e:
             log.info(f'Powerdown Script not uploaded in server : {e}')
             return jsonify({'error':'Powerdown Script not uploaded in server'}),500
@@ -154,15 +155,14 @@ def start__end():
                 return jsonify({'error':{'Not Found' : notfound_slave_addresses}}),500
             else:
                 state = request.json.get('state')
-                if state == 'True':
-                    log.error(f'Powerup Sequence initiated')
-                    return jsonify({'successful':f'Powerup Sequence initiated'}),200
-                elif state == 'False':
-                    log.error(f'Powerdown Sequence initiated')
-                    return jsonify({'successful':f'Powerdown Sequence initiated'}),200
+                if state:
+                    log.info(f'Powerup Sequence initiated')
                 else :
-                    log.error(f'Invalid device powerup/powerdown state : {state}')
-                    return jsonify({'error':f'Invalid device powerup/powerdown state : {state}'}),400
+                    log.info(f'Powerdown Sequence initiated')
+
+        vbso = bus_Voltage(device=device, addr=DEVICE.I2C.VBSOADC)
+        vbias = bus_Voltage(device=device, addr=DEVICE.I2C.VBAISADC)
+        return jsonify({'success':{'vbso':vbso,'vbais':vbias}}),200
                 
     else:
         log.error(f'MCP not Connected')
