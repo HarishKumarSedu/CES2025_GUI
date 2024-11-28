@@ -148,7 +148,7 @@ def start__end():
     device = get_device() 
     if device:
         if request.method == 'POST':
-            _,notfound_slave_addresses = slaves(device=device)
+            notfound_slave_addresses = slaves(device=device)
             if notfound_slave_addresses:
                 log.error(f'Deviceses are not found : {notfound_slave_addresses}')
                 return jsonify({'error':{'Not Found' : notfound_slave_addresses}}),500
