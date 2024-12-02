@@ -17,7 +17,7 @@ const IVM6311 = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="IVM6311" color="text-custom-inventvm-color" icon={Cpu} />
-      <div className="grid grid-cols-1 m-5 lg:grid-cols-2 gap-8 ">
+      <div className="grid grid-cols-1 m-5 mb-3 lg:grid-cols-2 gap-8 ">
         <Ivm6311Config />
         <div className="flex items-center">
           <motion.img

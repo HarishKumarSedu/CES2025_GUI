@@ -1,18 +1,20 @@
 import React,{useEffect,useState,useRef} from "react";
 import { delay, motion } from "framer-motion";
 import { Forward } from 'lucide-react';
+import { Alert } from "@material-tailwind/react";
 import axios from 'axios';
 import BASE_URL from '../../App';
 
 const Ivm6311Config = () => {
 
-  const [deviceSweep, setdeviceSweep] = useState({})
+  const [deviceSweep, setdeviceSweep] = useState({"dummy":"dummy"})
   const [vbsoAdcValue, setvbsoAdcValue] = useState(4.84)
   const [vbiasAdcValue, setvbiasAdcValue] = useState(6.25)
-  const [vbaisPotValue, setvbaisPotValue] = useState(null)
-  const [vbsoPotValue, setvbsoPotValue] = useState(null)
+  const [vbaisPotValue, setvbaisPotValue] = useState('')
+  const [vbsoPotValue, setvbsoPotValue] = useState('')
   const [powerupScript, setpowerupScript] = useState('')
   const [powerdownScript, setpowerdownScript] = useState('')
+  const [muteIvmdevice, setmuteIvmdevice] = useState(false)
   const powerupScriptRef = useRef();
   const powerdownScriptRef = useRef();
   const statusCheck = () =>{
@@ -53,7 +55,7 @@ const Ivm6311Config = () => {
           } 
         }
       })
-      .catch()
+      .catch(()=> <Alert/> )
     }
 
     else if (addr===24){
@@ -166,6 +168,7 @@ const Ivm6311Config = () => {
     };
     axios.post(url, formData, config).then((response) => {
       powerupScriptRef.current.value = ''
+
     })
     .catch(error=> console.log(error))
 
@@ -191,9 +194,10 @@ const Ivm6311Config = () => {
   const startEnd = e =>{
     const startstop = e.target.checked
     const state = {
-      "state": startstop
+      "state": startstop,
+      "muteivm":muteIvmdevice
     }
-
+    
     axios.post('http://127.0.0.1:5000/ivm6311/start-end', state)
       .then(response => {
         const data = response.data
@@ -216,7 +220,7 @@ const Ivm6311Config = () => {
       whileHover={{ y: -5, boxShadow: "0 30px 60px -18px rgba(0,0,0,0.6)" }}
     >
       <div className="flex items-center gap-6 ">
-        <button className= {deviceSweep ?  "w-7 h-7 rounded-full bg-green-600 shadow-xl shadow-green-300 border-5 border-emerald-300" : "w-7 h-7 rounded-full bg-red-500 shadow-xl shadow-rose-400  border-5 border-rose-400"} onClick={()=>statusCheck()}></button>
+        <button className= {deviceSweep.length ?  "w-7 h-7 rounded-full bg-green-600 shadow-xl shadow-green-300 border-5 border-emerald-300" : "w-7 h-7 rounded-full bg-red-500 shadow-xl shadow-rose-400  border-5 border-rose-400"} onClick={()=>statusCheck()}></button>
         <h1 className="mt-1 text-xl font-semibold text-gray-400">
           Config IVM6311 :
         </h1>
@@ -257,14 +261,14 @@ const Ivm6311Config = () => {
       </form>
       {/* powerup Script uploading form */}
       <form action="" className="flex flex-col gap-0 items-start" onSubmit={powerupScriptSubmit}>
-        <p className="text-sm font-bold text-gray-400" for='startup_script'>IVM6311 Startup script .csv/.json</p>
+        <p className="text-sm font-bold text-gray-400" htmlFor='startup_script'>IVM6311 Power up script .csv/.json</p>
         <div className="flex flex-row gap-6 items-center"> 
         <input  
         onChange={(e) => setpowerupScript(e.target.files[0])}
         placeholder="" 
         ref={powerupScriptRef}
         id="startup_script" 
-        className= "flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" 
+        className= " flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" 
         type="file"/>
         <button 
         type="submit"
@@ -273,7 +277,7 @@ const Ivm6311Config = () => {
       </form>
       {/* Power down script uploading form  */}
       <form action="" className="flex flex-col gap-0 items-start" onSubmit={powerdownScriptSubmit}>
-      <p className="text-sm font-bold text-gray-400" for='startup_script'>IVM6311 Powerdown script .csv/.json</p>
+      <p className="text-sm font-bold text-gray-400" htmlFor='startup_script'>IVM6311 Powerdown script .csv/.json</p>
         <div className="flex flex-row gap-6 items-center"> 
         <input  
           onChange={(e) => setpowerdownScript(e.target.files[0])}
@@ -283,11 +287,47 @@ const Ivm6311Config = () => {
         <button className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-pink-600 hover:border-collapse hover:bg-pink-600 hover:text-gray-100 ">Update</button>
         </div>
       </form>
+      {/* mute powerup Script uploading form */}
+      <form action="" className="flex flex-col gap-0 items-start" >
+        <p className="text-sm font-bold text-gray-400" htmlFor='startup_script'>mute script .csv/.json</p>
+        <div className="flex flex-row gap-6 items-center"> 
+        <input  
+        onChange={(e) => setpowerupScript(e.target.files[0])}
+        placeholder="" 
+        // ref={powerupScriptRef}
+        id="startup_script" 
+        className= "flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" 
+        type="file"/>
+        <button 
+        type="submit"
+        className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-orange-600 hover:border-collapse hover:bg-orange-600 hover:text-gray-100 ">Update</button>
+        </div>
+      </form>
+      {/* mute Power down script uploading form  */}
+      <form action="" className="flex flex-col gap-0 items-start" >
+      <p className="text-sm font-bold text-gray-400" htmlFor='startup_script'>Unmute script .csv/.json</p>
+        <div className="flex flex-row gap-6 items-center"> 
+        <input  
+          onChange={(e) => setpowerdownScript(e.target.files[0])}
+          ref={powerdownScriptRef}
+          placeholder="" 
+          className= "flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" id="startup_script" type="file"/>
+        <button className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-emerald-600 hover:border-collapse hover:bg-emerald-600 hover:text-gray-100 ">Update</button>
+        </div>
+      </form>
       {/* Start/Stop button  */}
-    <div className="flex place-items-end">
-       <label class="inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" onChange={startEnd} />
-          <div class="relative w-11 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-2
+    <div className="flex place-items-end gap-2">
+    <div className="flex items-center mb-4">
+    <input id="default-checkbox" type="checkbox" 
+    value={muteIvmdevice}
+    onChange={(e)=> setmuteIvmdevice(e.target.checked)}
+    className="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-checkbox" className="ms-2 text-sm font-bold text-gray-900 dark:text-gray-400">Ivm/ mute</label>
+    </div>
+       <div className="flex items-center mb-4">
+       <label className="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" className="sr-only peer" onChange={startEnd} />
+          <div className="relative w-11 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-2
            peer-focus:ring-slate-500 dark:peer-focus:ring-bg-rose-700 rounded-full peer
             dark:bg-rose-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
              peer-checked:after:border-white after:content-[''] after:absolute 
@@ -295,8 +335,9 @@ const Ivm6311Config = () => {
              after:border-gray-300 after:border after:rounded-full after:h-5 
              after:w-5 after:transition-all
            dark:border-gray-600 peer-checked:bg-emerald-500"></div>
-          <span class="ms-3 text-sm font-bold text-gray-400 dark:text-gray-300">Start / End</span>
+          <span className="ms-3 text-sm font-bold text-gray-400 dark:text-gray-300">Start / End</span>
         </label>
+       </div>
     </div>
     </motion.div>
   );
