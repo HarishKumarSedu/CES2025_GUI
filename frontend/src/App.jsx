@@ -7,13 +7,25 @@ import IVM6311 from './components/IVM6311'
 import IVM6310 from './components/IVM6310'
 import About from './components/About'
 import Setting from './components/Setting'
-
-// updated this after recording. Make sure you do the same so that it can work in production
-export const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "";
-// export const BASE_URL = 'http://localhost:5000';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
+    <>
+    <ToastContainer
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+      transition: Bounce
+      />
     <div className="flex h-screen bg-gray-900 text-gray-50 overflow-hidden">
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gra-900 via-gray-800 to-gray-900 opacity-80" />
@@ -28,6 +40,7 @@ const App = () => {
           <Route path='/settings' element={<Setting />} />
       </Routes>
     </div>
+    </>
   )
 }
 
