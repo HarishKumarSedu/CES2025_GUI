@@ -1,18 +1,50 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
 import {
   Cpu,
-  BarChart2,
   BrainCircuit,
   NotebookText,
   CircuitBoard,
-  Axis3D,
+
 } from "lucide-react";
 import Header from "./Header";
 import { motion } from "framer-motion";
+
 import StatCard from "./ivm6311/StatCard";
 import Ivm6311Config from "./ivm6311/Ivm6311Config";
+import ivm6311_funcdigram from '../assets/ivm6311_blockdg.png'
+import ivm6311_schematic from '../assets/ivm6311_schematic.png'
+import ivm6311_pinout from '../assets/ivm6311_pinout.png'
+import ivm6311_note from '../assets/ivm6311_note.png'
+
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 800,
+  bgcolor: 'transparent',
+  borderWidth: 0,
+  boxShadow: 24,
+  focus: {
+    borderWidth:0,
+  }
+};
+
 
 const IVM6311 = () => {
+
+  const [circuitOpen, setCircuitOpen] = React.useState(false);
+  const handleCircuitOpen = () => setCircuitOpen(!circuitOpen);
+  const [layoutOpen, setLayoutOpen] = React.useState(false);
+  const handleLayoutOpen = () => setLayoutOpen(!layoutOpen);
+  const [functionDiagOpen, setFunctionDiagOpen] = React.useState(false);
+  const handlesetFunctionDiagOpen = () => setFunctionDiagOpen(!functionDiagOpen);
+  const [noteOpen, setNoteOpen] = React.useState(false);
+  const handlesetNoteOpen= () => setNoteOpen(!noteOpen);
 
   return (
     <div className="flex-1 overflow-auto relative z-10">
@@ -38,25 +70,82 @@ const IVM6311 = () => {
           animate={{ opacity: 1, width: "auto" }}
           transition={{ duration: 1 }}
         >
-          <StatCard
-            name="Schematic"
-            icon={CircuitBoard}
-            value="IVM6311"
-            color="#6366f1"
-          />
+          <div onClick={handleCircuitOpen}>
+          <StatCard name="Schematic" icon={CircuitBoard} value="IVM6311" color="#6366f1"/>
+          </div>
+          <div onClick={handleLayoutOpen}>
           <StatCard name="Layout" icon={Cpu} value="IVM6311" color="#8B5CF6" />
-          <StatCard
-            name="Functional Daigram"
-            icon={BrainCircuit}
-            value="IVM6311"
-            color="#EC4899"
-          />
-          <StatCard
-            name="Note"
-            icon={NotebookText}
-            value="IVM6311"
-            color="#10B881"
-          />
+          </div>
+          <div onClick={handlesetFunctionDiagOpen}>
+          <StatCard name="Functional Daigram" icon={BrainCircuit} value="IVM6311" color="#EC4899"/>
+          </div >
+          <div onClick={handlesetNoteOpen}>
+          <StatCard name="Note" icon={NotebookText} value="IVM6311" color="#10B881"/>
+          </div>
+          <div>
+      <Modal
+        open={circuitOpen}
+        onClose={handleCircuitOpen}
+      >
+        <Box sx={style}>
+          <div className="grid place-items-end">
+          <button variant="gradient" className="-mb-1 -mr-4  text-gray-100 text-xl rounded-full  hover:text-gray-400 lg:text-2xl" 
+          onClick={handleCircuitOpen}>
+            x
+          </button>
+            <img src={ivm6311_schematic} alt="" className="rounded-xl" />
+          </div>
+        </Box>
+      </Modal>
+      <Modal
+        open={layoutOpen}
+        onClose={handleLayoutOpen}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className="grid place-items-end">
+          <button variant="gradient" className="-mb-1 -mr-4  text-gray-100 text-xl rounded-full  hover:text-gray-400 lg:text-2xl" 
+          onClick={handleLayoutOpen}>
+            x
+          </button>
+            <img src={ivm6311_pinout} alt="" className="rounded-xl" />
+          </div>
+        </Box>
+      </Modal>
+      <Modal
+        open={functionDiagOpen}
+        onClose={handlesetFunctionDiagOpen}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className="grid place-items-end">
+          <button variant="gradient" className="-mb-1 -mr-4  text-gray-100 text-xl rounded-full  hover:text-gray-400 lg:text-2xl" 
+          onClick={handlesetFunctionDiagOpen}>
+            x
+          </button>
+            <img src={ivm6311_funcdigram} alt="" className="rounded-xl" />
+          </div>
+        </Box>
+      </Modal>
+      <Modal
+        open={noteOpen}
+        onClose={handlesetNoteOpen}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className="grid place-items-end">
+          <button variant="gradient" className="-mb-1 -mr-4  text-gray-100 text-xl rounded-full  hover:text-gray-400 lg:text-2xl" 
+          onClick={handlesetNoteOpen}>
+            x
+          </button>
+            <img src={ivm6311_note} alt="" className="rounded-xl" />
+          </div>
+        </Box>
+      </Modal>
+    </div>
         </motion.div>
       </main>
     </div>

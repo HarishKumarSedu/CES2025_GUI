@@ -8,7 +8,6 @@ import IVM6310 from './components/IVM6310'
 import About from './components/About'
 import Setting from './components/Setting'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (

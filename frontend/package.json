@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
     "@material-tailwind/react": "^2.1.10",
+    "@mui/material": "^6.1.10",
     "axios": "^1.7.8",
-    "flowbite-react": "^0.10.2",
     "framer-motion": "^11.11.13",
     "lucide-react": "^0.456.0",
     "react": "^18.3.1",
@@ -21,7 +23,7 @@
     "react-router-dom": "^6.28.0",
     "react-toastify": "^10.0.6",
     "state-pool": "^0.10.1",
-    "swiper": "^10.0.0",
+    "swiper": "^11.1.15",
     "tw-elements-react": "^1.0.0-alpha-end"
   },
   "devDependencies": {
