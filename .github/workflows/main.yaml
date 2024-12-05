@@ -53,7 +53,7 @@ jobs:
         uses: actions/attest-build-provenance@v1
         with:
           context: frontend
-          file: ./Dcokerfile
+          file: ./Dokerfile
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
