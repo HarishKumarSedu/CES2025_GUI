@@ -253,13 +253,30 @@ def start__end():
     #     return jsonify({'error':'MCP not Connected'}),500
 
 def write_into_slaves(scriptPath=""):
+    device = get_device() 
     if scriptPath:
         data = pd.read_csv(scriptPath)
         data.reset_index(inplace=True)
         for index, row in data.iterrows():
-            device_data = row['DATA'].split('DATA:')[-1].strip()
-            device_data = [int(i, 16) for i  in device_data.split(' ') ]  if (' ' in device_data)  else [int(device_data,16)]
-            page=int(row['Page'].split('PAGE:')[-1].strip(), 16)
-            device_data.insert(0,page)
-            sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
-            print('sad =',hex(sad),'data = ',device_data)
+            if row['Command'] == 'WR-Reg':
+                device_data = row['DATA'].split('DATA:')[-1].strip()
+                device_data = [int(i, 16) for i  in device_data.split(' ') ]  if (' ' in device_data)  else [int(device_data,16)]
+                page=int(row['Page'].split('PAGE:')[-1].strip(), 16)
+                addr=int(row['ADD'].split('ADD:')[-1].strip(), 16)
+                device_data.insert(0,page)
+                device_data.insert(1,addr)
+                sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
+                print('sad =',hex(sad),'data = ',device_data)
+                # slave = device.I2C_Slave(sad).write(device_data)
+            if row['Command'] == 'WR-bit':
+                device_data = int(row['DATA'].split('DATA:')[-1].strip(),16)
+                msb = int(row['MSB'].split('MSB:')[-1].strip(),16)
+                lsb = int(row['LSB'].split('LSB:')[-1].strip(),16)
+                device_read_data = 0x00
+                mask = ~(((1 << msb - msb + 1)) -1) << lsb
+                device_data = [(device_read_data & mask ) | device_data << lsb ]
+                device_data.insert(0,page)
+                device_data.insert(1,addr)
+                sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
+                print('sad =',hex(sad),'data = ',device_data)
+                # slave = device.I2C_Slave(sad).write(device_data)

@@ -1,92 +1,16 @@
 ,Command,Check,Page,SAD,ADD,DATA,MSB,LSB,Comment
-0,WR-Reg, CHECK: O, PAGE: 0, SAD: 2f, ADD: 02, DATA: 46,,,COM: VBSO Set to 5V
-1,WR-Reg, CHECK: O, PAGE: 0, SAD: 2d, ADD: 02, DATA: 2f,,,COM: VBIAS Set to 6.3V
-2,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 00,,,COM: Set pag 0
-3,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 01, DATA: 01,,,COM: Reset
-4,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 00, DATA: 01,,,COM: Power up
-5,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 01,,,COM: Set pag 1
-6,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 2F, DATA: AA,,,COM: Unlock test page
-7,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 2F, DATA: BB,,,
-8,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 0F, DATA: 80,,,
-9,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: B0, DATA: 3E,,,
-10,WR-bit, CHECK: O, PAGE: 0, SAD: 6C, ADD: EF, DATA: 14, MSB: 4, LSB: 0,
-11,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 00,,,COM: Set pag 0
-12,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 32, DATA: 15,,,
-13,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 35, DATA: C1,,,
-14,WR-bit, CHECK: O, PAGE: 0, SAD: 6C, ADD: 13, DATA: 01, MSB: 4, LSB: 4,
-15,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 11, DATA: 00,,,
-16,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: FC, DATA: 04,,,
-17,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 86, DATA: 01,,,COM: Low noise mode
-18,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 70, DATA: 80 80 80,,,COM: Order modulator 2
-19,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 77, DATA: 00 00 00,,,COM: Randomizer DWA
-20,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 7A, DATA: 00 00 00,,,COM: DYC off
-21,WR-bit, CHECK: O, PAGE: 0, SAD: 6C, ADD: B4, DATA: 00, MSB: 2, LSB: 0,COM: Force boost HiZ
-22,WR-bit, CHECK: O, PAGE: 0, SAD: 6C, ADD: B2, DATA: 01, MSB: 1, LSB: 0,COM: Force boost HiZ
-23,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: B0, DATA: FE,,,
-24,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 51, DATA: 00 03,,,COM: noise gate TH
-25,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 50, DATA: 0B,,,COM: Noise gate off
-26,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: E1, DATA: 00,,,COM: Cal off
-27,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 01,,,COM: Set pag 1
-28,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 21, DATA: 40,,,
-29,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 23, DATA: 40 01,,,
-30,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 00,,,COM: Set pag 0
-31,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 80, DATA: c0,,,
-32,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 01,,,COM: Set pag 1
-33,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 13, DATA: 80 80,,,
-34,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 18, DATA: 10 00,,,
-35,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: fe, DATA: 00,,,COM: Set pag 0
-36,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 01, DATA: 01,,,COM: Reset
-37,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 00, DATA: 01,,,COM: Power up
-38,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe, DATA: 01,,,COM: Set pag1
-39,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 2F, DATA: AA,,,COM: Unlock test page
-40,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 2F, DATA: BB,,,
-41,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 0F, DATA: 80,,,
-42,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: B0, DATA: 3a,,,
-43,WR-bit, CHECK: O, PAGE: 0, SAD: 6D, ADD: EF, DATA: 14, MSB: 4, LSB: 0,
-44,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe, DATA: 0,,,COM: Set pag 0
-45,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 32, DATA: 15,,,
-46,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 35, DATA: C2,,,COM: Slot2 TDM IVM6311
-47,WR-bit, CHECK: O, PAGE: 0, SAD: 6D, ADD: 13, DATA: 01, MSB: 4, LSB: 4,
-48,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 11, DATA: 00,,,
-49,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: FC, DATA: 04,,,
-50,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 86, DATA: 01,,,COM: Low noise mode
-51,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 70, DATA: 80 80 80,,,COM: Order modulator 2
-52,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 77, DATA: 00 00 00,,,COM: Randomizer DWA
-53,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 7A, DATA: 00 00 00,,,COM: DYC off
-54,WR-bit, CHECK: O, PAGE: 0, SAD: 6D, ADD: B4, DATA: 00, MSB: 2, LSB: 0,COM: Force boost HiZ
-55,WR-bit, CHECK: O, PAGE: 0, SAD: 6D, ADD: B2, DATA: 01, MSB: 1, LSB: 0,COM: Force boost HiZ
-56,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: B0, DATA: FE,,,
-57,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 51, DATA: 00 03,,,COM: noise gate TH
-58,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 50, DATA: 0B,,,COM: Noise gate off
-59,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: E1, DATA: 00,,,COM: Cal off
-60,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe, DATA: 01,,,COM: Set pag1
-61,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 21, DATA: 40,,,
-62,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 23, DATA: 40 01,,,
-63,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe, DATA: 0,,,COM: Set pag 0
-64,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 80, DATA: c0,,,
-65,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe, DATA: 01,,,COM: Set pag1
-66,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 13, DATA: 80 80,,,
-67,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 18, DATA: 10 00,,,
-68,WR-Reg, CHECK: O, PAGE: 0, SAD: 2d, ADD: 02, DATA: 4,,,COM: VBIAS 16V
-69,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 00,,,COM: Set pag 0
-70,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: fe, DATA: 00,,,COM: Set pag 0
-71,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 19, DATA: 01,,,COM: Spk_en = 
-72,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 19, DATA: 01,,,COM: Spk_en = 
-73,WR-Reg, CHECK: O, PAGE: 0, SAD: 2f, ADD: 02, DATA: 34,,,COM: VBSO to 6 V 
-74,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: FE, DATA: 01,,,COM: Set pag1
-75,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 13, DATA: 80 00,,,COM: Clamp ON
-76,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 18, DATA: 10 10,,,COM: Clamp ON
-77,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: fe, DATA: 01,,,COM: Set pag1
-78,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 13, DATA: 80 00,,,COM: Clamp ON
-79,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 18, DATA: 10 10,,,COM: Clamp ON
-80,WR-Reg, CHECK: O, PAGE: 0, SAD: 2f, ADD: 02, DATA: d,,,COM: VBSO to 12 V - value
-81,WR-Reg, CHECK: X, PAGE: 0, SAD: 34, ADD: 4, DATA: 0,,,
-82,WR-Reg, CHECK: X, PAGE: 0, SAD: 34, ADD: c, DATA: 1,,,
-83,WR-Reg, CHECK: X, PAGE: 0, SAD: 34, ADD: d, DATA: 1,,,COM: Slot 2 ADI - default
-84,WR-Reg, CHECK: X, PAGE: 0, SAD: 34, ADD: 12, DATA: 1,,,
-85,WR-Reg, CHECK: X, PAGE: 0, SAD: 36, ADD: 4, DATA: 0,,,
-86,WR-Reg, CHECK: X, PAGE: 0, SAD: 36, ADD: c, DATA: 1,,,
-87,WR-Reg, CHECK: X, PAGE: 0, SAD: 36, ADD: d, DATA: 0,,,COM: Slot 1 ADI
-88,WR-Reg, CHECK: X, PAGE: 0, SAD: 36, ADD: 12, DATA: 1,,,
-89,WR-Reg, CHECK: X, PAGE: 0, SAD: 34, ADD: 8, DATA: 12,,,COM: UNMUTE  12
-90,WR-Reg, CHECK: X, PAGE: 0, SAD: 36, ADD: 8, DATA: 12,,,COM: UNMUTE  12
+0,WR-Reg, CHECK: O, PAGE: 0, SAD: 2f, ADD: 2, DATA: 34,,,COM: VBSO to 6V 
+1,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 1,,,COM: Set pag 1
+2,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 13, DATA: 80 80,,,
+3,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 18, DATA: 10 00,,,
+4,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe, DATA: 1,,,COM: set pag 1
+5,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 13, DATA: 80 80,,,
+6,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 18, DATA: 10 00,,,
+7,WR-Reg, CHECK: O, PAGE: 0, SAD: 2f, ADD: 02, DATA: 46,,,COM: VBSO to 5V
+8,WR-Reg, CHECK: O, PAGE: 0, SAD: 2d, ADD: 02, DATA: 2f,,,COM: VBIAS to 6.3V
+9,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 0,,,COM: set pag 0
+10,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 19, DATA: 00,,,
+11,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe , DATA: 0,,,COM: Set pag0
+12,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 19, DATA: 00,,,
+13,WR-Reg, CHECK: O, PAGE: 0, SAD: 34, ADD: 8, DATA: 13,,,COM: mute ADI
+14,WR-Reg, CHECK: O, PAGE: 0, SAD: 36, ADD: 8, DATA: 13,,,COM: mute ADI
