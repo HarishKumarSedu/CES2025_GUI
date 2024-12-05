@@ -1,5 +1,9 @@
-node_modules
+README.md
 build
-.dockerignore
-Dockerfile
-Dockerfile.prod
+dist
+node_modules
+LICENSE
+package-lock.json
+.git
+.DS_Store
+.env

@@ -8,6 +8,12 @@ import IVM6310 from './components/IVM6310'
 import About from './components/About'
 import Setting from './components/Setting'
 import { ToastContainer } from 'react-toastify'
+import { injectStyle } from "react-toastify/dist/inject-style";
+// CALL IT ONCE IN YOUR APP
+if (typeof window !== "undefined") {
+  injectStyle();
+}
+
 
 const App = () => {
   return (
