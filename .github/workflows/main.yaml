@@ -1,5 +1,5 @@
 #
-name: Demo Push
+name: Build and Push the Docker Imgae to github registry
 
 # This workflow runs when any of the following occur:
 # - A push is made to a branch called `main` or `seed`
@@ -8,12 +8,11 @@ name: Demo Push
 on:
   push:
     branches:
-      - main
+      - 'release'
       - seed
     tags:
       - v*
   pull_request:
-  # This creates an environment variable called `IMAGE_NAME ` with the value `ghtoken_product_demo`.
 env:
   IMAGE_NAME: ces2025_frontend
 #
