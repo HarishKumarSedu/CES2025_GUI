@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes,Route } from 'react-router-dom'
 
 import Sidebar from './components/Sidebar'
@@ -14,8 +14,8 @@ if (typeof window !== "undefined") {
   injectStyle();
 }
 
-
 const App = () => {
+
   return (
     <>
     <ToastContainer
