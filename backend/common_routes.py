@@ -21,8 +21,10 @@ def sweep_devices():
                 log.error(f'Deviceses are not found : {adresses}')
                 return jsonify({'error':{'Not Found' : adresses}}),500
         else:
+            vbso = bus_Voltage(device=device, addr=DEVICE.I2C.VBSOADC)
+            vbias = bus_Voltage(device=device, addr=DEVICE.I2C.VBAISADC)
             log.debug(f'Deviceses are found Successfully: {DEVICE.I2C}')
-            return jsonify({'success':{'Deviceses are found Successfully' : DEVICE.I2C}}),200
+            return jsonify({'success':{'Deviceses' : DEVICE.I2C,'vbso':vbso,'vbias':vbias}}),200
     else:
         log.error(f'MCP not Connected')
         return jsonify({'error':'MCP not Connected'}),500
@@ -47,3 +49,18 @@ def device_check(func,device):
             log.error(f'MCP not Connected')
             return jsonify({'error':'MCP not Connected'}),500
     return wrapper
+
+def bus_Voltage(device=None,addr=0x29):
+    try:
+        sleep(0.1)
+        BoostADC = device.I2C_Slave(addr)
+        BoostADC.write([0x0B,0x5C])
+        Vsense_LSB = int.from_bytes(BoostADC.read_register(0x0D),'little') # LSB of the ADC value 
+        Vsense_MSB = int.from_bytes(BoostADC.read_register(0x11),'little') # LSB of the ADC value 
+        FSV = (40 - 40/2047) 
+        Vsense = ((Vsense_MSB << 8 ) | Vsense_LSB) >> 5 
+        Vbus = round(FSV*Vsense / 2047,2)
+        return Vbus
+    except EasyMCP2221.exceptions.NotAckError as e:
+        log.error(f'Device Not Found {addr}')
+        return jsonify({'error':f'Device Not Found {addr}'}),500

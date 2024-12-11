@@ -12,23 +12,74 @@ import re
 import pandas as pd 
 from io import StringIO
 from common_routes import slaves,device_check
+from time import sleep
 
 DEVICE = read_yaml(Path('config/DeviceAddress.yaml'))
 
-
+@app.route('/ivm6311/setup-adi_turn_off',methods=['GET'])
+def adi_turn_off():
+    device = get_device()
+    adi1 = device.I2C_Slave(0x34).write([0x8,0x13])
+    adi2 = device.I2C_Slave(0x36).write([0x8,0x13])
+    return jsonify({})
+    
+@app.route('/ivm6311/setup-adi_tur_on',methods=['GET'])
+def adi_turn_on():
+    device = get_device()
+    adi1 = device.I2C_Slave(0x34).write([0x8,0x12])
+    adi2 = device.I2C_Slave(0x36).write([0x8,0x12])
+    return jsonify({})
+    
+@app.route('/ivm6311/setup-state',methods=['GET'])
+def get_state():
+    device = get_device()
+    if device:
+        audio_slaves = DEVICE.AUDIO
+        print(DEVICE.AUDIO)
+        message={}
+        alldevices_state = False
+        ivm_state = False
+        for name, address in audio_slaves.items():
+            try:
+                if re.findall('ADI',name):
+                    slave = device.I2C_Slave(address)
+                    message.update({hex(address):'OFF'}) if int(int.from_bytes(slave.read_register(0x08),'little')) == 0x13 else message.update({hex(address):'ON'})
+                if re.findall('IVM',name):
+                    slave = device.I2C_Slave(address)
+                    slave.write([0xfe,0x00]) # shift it to page zero
+                    if int(int.from_bytes(slave.read_register(0x19),'little')) == 0x1:
+                        message.update({hex(address):'ON'})
+                        ivm_state=True
+                    else:
+                        message.update({hex(address):'OFF'})
+                        ivm_state=False
+                alldevices_state=True
+                alldevices_state = alldevices_state & ivm_state
+            except EasyMCP2221.exceptions.NotAckError as e:
+                alldevices_state=False
+                message.update({address:'Disconnected'})
+        return jsonify({'success':{'deviceState':{'state':alldevices_state,'onlyivm':ivm_state}},'message':message}),200
+    else:
+        log.error(f'MCP not Connected')
+        return jsonify({'error':'MCP not Connected'}),500
+            
 @app.route('/ivm6311/setpot',methods=['POST'])
 def setPot_resistance__value():
     device = get_device()
     if device:
         try :
             data = request.json
-            print(data)
             potaddr = int(data.get('potAddr'),16)
             adcaddr = int(data.get('adcAddr'),16)
-            potvalue = int(data.get('value'),16)
-            pot = device.I2C_Slave(potaddr)
-            pot.write([0x02,potvalue])
-            return bus_Voltage(device=device,addr=adcaddr)
+            if (potvalue := data.get('value')):
+                potvalue = int('0x'+ potvalue,16)
+                pot = device.I2C_Slave(potaddr)
+                pot.write([0x02,potvalue])
+                return get_adcVbus__Voltage(addr=adcaddr)
+            else :
+                log.error(f'Device invalud pot value {potvalue}')
+                return jsonify({'error':f'Invalid pot value {potvalue}'}),500
+                
         except EasyMCP2221.exceptions.NotAckError as e:
             log.error(f'Device Not Found {data.potAddr}')
             return jsonify({'error':f'Device Not Found {data.potAddr}'}),500
@@ -38,6 +89,7 @@ def setPot_resistance__value():
 
 def bus_Voltage(device=None,addr=0x29):
     try:
+        sleep(0.1)
         BoostADC = device.I2C_Slave(addr)
         BoostADC.write([0x0B,0x5C])
         Vsense_LSB = int.from_bytes(BoostADC.read_register(0x0D),'little') # LSB of the ADC value 
@@ -68,7 +120,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/ivm6311/powerup-script', methods=['GET', 'POST'])
+@app.route('/ivm6311/powerup-script-ivm-only', methods=['GET', 'POST'])
 def ivmpowerup_script():
     if request.method == 'POST':
         try:
@@ -85,7 +137,7 @@ def ivmpowerup_script():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 data='\n'.join(file.read().decode('utf-8').splitlines()[2:])
-                with open('scripts/powerup.csv','w') as file :
+                with open('scripts/onlyivmpowerup.csv','w') as file :
                     data = pd.read_csv(StringIO(data),sep=';',index_col=False).to_csv(file)
                     log.info('IVM Powerup Script uploaded sucessfully')
             return jsonify({'success':'IVM Powerup Script uploaded sucessfully'}),200
@@ -104,7 +156,7 @@ def ivmpowerup_script():
         </form>
         '''
 @app.route('/ivm6311/powerup-all-script', methods=['GET', 'POST'])
-def adipowerup_script():
+def allpowerup_script():
     if request.method == 'POST':
         try:
             # check if the post request has the file part
@@ -141,7 +193,7 @@ def adipowerup_script():
 
 
 @app.route('/ivm6311/powerdown-all-script', methods=['GET', 'POST'])
-def adipowerdown_script():
+def allpowerdown_script():
     if request.method == 'POST':
         try:
             # check if the post request has the file part
@@ -176,7 +228,7 @@ def adipowerdown_script():
           <input type=submit value=Upload>
         </form>
         '''
-@app.route('/ivm6311/powerdown-script', methods=['GET', 'POST'])
+@app.route('/ivm6311/powerdown-script-ivm-only', methods=['GET', 'POST'])
 def ivmpowerdown_script():
     if request.method == 'POST':
         try:
@@ -195,7 +247,7 @@ def ivmpowerdown_script():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 data='\n'.join(file.read().decode('utf-8').splitlines()[2:])
-                with open('scripts/powerdown.csv','w') as file :
+                with open('scripts/onlyivmpowerdown.csv','w') as file :
                     pd.read_csv(StringIO(data),sep=';',index_col=False).to_csv(file)
 
                 return jsonify({'success':'IVM Powerdown Script uploaded sucessfully'}),200
@@ -217,66 +269,95 @@ def ivmpowerdown_script():
 def start__end():
     # check all the devices exits
     device = get_device() 
-    # if device:
-    if request.method == 'POST':
-        # notfound_slave_addresses = slaves(device=device)
-        notfound_slave_addresses = []
-        if notfound_slave_addresses:
-            log.error(f'Deviceses are not found : {notfound_slave_addresses}')
-            return jsonify({'error':{'Not Found' : notfound_slave_addresses}}),500
-        else:
-            state = request.json.get('state')
-            onlyivm = request.json.get('onlyivm')
-            if not state and not onlyivm:
-                log.info(f'Powerup Sequence initiated')
-                write_into_slaves('scripts/powerupall.csv')
-            elif  state and not onlyivm:
-                
-                log.info(f'Powerdown Sequence initiated')
-                write_into_slaves('scripts/powerdownall.csv')
-            elif not state and onlyivm:
-                log.info(f'only ivm Powerup Sequence initiated')
-                write_into_slaves('scripts/powerup.csv')
-            elif  state and onlyivm:
-                log.info(f'only ivm Powerdown Sequence initiated')
-                write_into_slaves('scripts/powerdown.csv')
-            else :
-                log.info(f'Powerdown Sequence initiated')
+    if device:
+        if request.method == 'POST':
+            notfound_slave_addresses = slaves(device=device)
+            if notfound_slave_addresses:
+                log.error(f'Deviceses are not found : {notfound_slave_addresses}')
+                return jsonify({'error':{'Not Found' : notfound_slave_addresses}}),500
+            else:
+                state = request.json.get('state')
+                if not state :
+                    log.info(f'Powerup Sequence initiated for all devices')
+                    write_into_slaves('scripts/powerupall.csv')
+                elif  state:
 
-    #     vbso = bus_Voltage(device=device, addr=DEVICE.I2C.VBSOADC)
-    #     vbias = bus_Voltage(device=device, addr=DEVICE.I2C.VBAISADC)
-    #     return jsonify({'success':{'vbso':vbso,'vbais':vbias}}),200
-        return jsonify({'success':{'vbso':4.84,'vbias':6.25}}),200
+                    log.info(f'Powerdown Sequence initiated for all devices')
+                    write_into_slaves('scripts/powerdownall.csv')
+                else :
+                    log.info(f'Powerdown Sequence initiated')
+
+        vbso = bus_Voltage(device=device, addr=DEVICE.I2C.VBSOADC)
+        vbias = bus_Voltage(device=device, addr=DEVICE.I2C.VBAISADC)
+        return jsonify({'success':{'vbso':vbso,'vbias':vbias}}),200
+            # return jsonify({'success':{'vbso':4.84,'vbias':6.25}}),200
                 
-    # else:
-    #     log.error(f'MCP not Connected')
-    #     return jsonify({'error':'MCP not Connected'}),500
+    else:
+        log.error(f'MCP not Connected')
+        return jsonify({'error':'MCP not Connected'}),500
+    
+@app.route('/ivm6311/start-end-ivm-only',methods=['POST'])
+def start__end__ivmonly():
+    # check all the devices exits
+    device = get_device() 
+    if device:
+        if request.method == 'POST':
+            # notfound_slave_addresses = slaves(device=device)
+            notfound_slave_addresses = []
+            if notfound_slave_addresses:
+                log.error(f'Deviceses are not found : {notfound_slave_addresses}')
+                return jsonify({'error':{'Not Found' : notfound_slave_addresses}}),500
+            else:
+                onlyivm = request.json.get('onlyivm')
+                if not  onlyivm:
+                    log.info(f'only ivm Powerup Sequence initiated')
+                    write_into_slaves('scripts/onlyivmpowerup.csv')
+                elif  onlyivm:
+                    log.info(f'only ivm Powerdown Sequence initiated')
+                    write_into_slaves('scripts/onlyivmpowerdown.csv')
+                else :
+                    log.info(f'Powerdown Sequence initiated')
+
+        vbso = bus_Voltage(device=device, addr=DEVICE.I2C.VBSOADC)
+        vbias = bus_Voltage(device=device, addr=DEVICE.I2C.VBAISADC)
+        return jsonify({'success':{'vbso':vbso,'vbias':vbias}}),200
+        # return jsonify({'success':{'vbso':4.84,'vbias':6.25}}),200
+                
+    else:
+        log.error(f'MCP not Connected')
+        return jsonify({'error':'MCP not Connected'}),500
 
 def write_into_slaves(scriptPath=""):
     device = get_device() 
+    # audio_slaves = {key:value for key,value in DEVICE.I2C.items() if key  in ['IVM6311_1','IVM6311_2','ADI_1','ADI_2']}
     if scriptPath:
         data = pd.read_csv(scriptPath)
         data.reset_index(inplace=True)
         for index, row in data.iterrows():
+            sleep(0.01)
             if row['Command'] == 'WR-Reg':
                 device_data = row['DATA'].split('DATA:')[-1].strip()
                 device_data = [int(i, 16) for i  in device_data.split(' ') ]  if (' ' in device_data)  else [int(device_data,16)]
                 page=int(row['Page'].split('PAGE:')[-1].strip(), 16)
                 addr=int(row['ADD'].split('ADD:')[-1].strip(), 16)
-                device_data.insert(0,page)
-                device_data.insert(1,addr)
                 sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
-                print('sad =',hex(sad),'data = ',device_data)
-                # slave = device.I2C_Slave(sad).write(device_data)
+                # if sad in DEVICE.AUDIO.values():
+                #     device_data.insert(0,page) # insert the page address 
+                device_data.insert(0,addr) # put register address at the begining
+                # print('sad =',hex(sad),'data = ',device_data)
+                device.I2C_Slave(sad).write(device_data)
             if row['Command'] == 'WR-bit':
                 device_data = int(row['DATA'].split('DATA:')[-1].strip(),16)
                 msb = int(row['MSB'].split('MSB:')[-1].strip(),16)
                 lsb = int(row['LSB'].split('LSB:')[-1].strip(),16)
-                device_read_data = 0x00
+                addr=int(row['ADD'].split('ADD:')[-1].strip(), 16)
+                sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
+                slave = device.I2C_Slave(sad)
+                device_read_data=int.from_bytes(slave.read_register(addr),'little')
                 mask = ~(((1 << msb - msb + 1)) -1) << lsb
                 device_data = [(device_read_data & mask ) | device_data << lsb ]
-                device_data.insert(0,page)
-                device_data.insert(1,addr)
-                sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
-                print('sad =',hex(sad),'data = ',device_data)
-                # slave = device.I2C_Slave(sad).write(device_data)
+                # if sad in DEVICE.AUDIO.values():
+                #     device_data.insert(0,page) # insert the page address 
+                device_data.insert(0,addr) # put register address at the begining
+                # print('sad =',hex(sad),'data = ',device_data)
+                slave.write(device_data)
