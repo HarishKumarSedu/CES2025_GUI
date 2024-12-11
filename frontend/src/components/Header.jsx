@@ -15,6 +15,7 @@ const Header = ({title,icon:Icon,color='text-gray-50' }) => {
       <div className='max-w-7xl mx-1 py-4 px-4 hidden lg:block lg:px-8 md:px-4 md:block '>
 				{/* <h1 className={`text-2xl font-semibold ${color}`} >{title}</h1>  */}
         <span className="flex items-center text-sm font-medium text-gray-400">
+          
           <Icon size={30} className={`mr-2 text-2xl font-semibold ${color}`}  />
           <p className={`text-xl font-semibold ${color}`}> {title}</p>
         </span>

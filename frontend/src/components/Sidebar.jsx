@@ -14,7 +14,7 @@ const SIDEBAR_ITEMS = [
 	},
 	{ name: "IVM6311", icon: Cpu, color: "#F59E0B", href: "/IVM6311" },
 	{ name: "IVM6310", icon: Cpu, color: "#EC4899", href: "/IVM6310" },
-	{ name: "About", icon: ShieldQuestion, color: "#10B981", href: "/About" },
+	{ name: "Products", icon: ShieldQuestion, color: "#10B981", href: "/Products" },
 	{ name: "Settings", icon: Settings, color: "#8B5CF6", href: "/settings" },
 ];
 

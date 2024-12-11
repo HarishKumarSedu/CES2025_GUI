@@ -5,7 +5,7 @@ import Sidebar from './components/Sidebar'
 import Home from './components/Home'
 import IVM6311 from './components/IVM6311'
 import IVM6310 from './components/IVM6310'
-import About from './components/About'
+import Devices from './components/Devices'
 import Setting from './components/Setting'
 import { ToastContainer } from 'react-toastify'
 import { injectStyle } from "react-toastify/dist/inject-style";
@@ -31,7 +31,7 @@ const App = () => {
       theme="dark"
       transition: Bounce
       />
-    <div className="flex h-screen bg-gray-900 text-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-gray-900 text-gray-50 overflow-hidden min-w-720px">
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gra-900 via-gray-800 to-gray-900 opacity-80" />
         <div className="absolute inset-0 backdrop-blur-sm" />
@@ -41,7 +41,7 @@ const App = () => {
           <Route path='/' element={<Home/>} />
           <Route path='/ivm6311' element={<IVM6311 />} />
           <Route path='/ivm6310' element={<IVM6310 />} />
-          <Route path='/about' element={<About />} />
+          <Route path='/products' element={<Devices />} />
           <Route path='/settings' element={<Setting />} />
       </Routes>
     </div>
