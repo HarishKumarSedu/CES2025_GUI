@@ -1,63 +1,163 @@
-import React from "react";
+import React,{useState,useRef,useEffect} from "react";
 import { motion } from "framer-motion";
 import { Forward } from 'lucide-react';
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+import {toastoptions} from "../toast/constants";
+import axios from "axios";
 
+const DRAGON_FLY_LEFT_SPEAKER_SCRIPT_URL = 'http://localhost:5000/ivm6310/dragon-fly-left-script'
+const DRAGON_FLY_RIGHT_SPEAKER_SCRIPT_URL = 'http://localhost:5000/ivm6310/dragon-fly-right-script'
+const DRAGON_FLY_SETUP_STATE = 'http://localhost:5000/ivm6310/dragon-fly-setup-state'
 const Ivm6310Config = () => {
+  const [deviceSweep, setdeviceSweep] = useState({})
+  const [deviceSweepIntervalCount, setdeviceSweepSweepIntervalCount] = useState(0)
+  const [dragonFlyLeftScript, setdragonFlyLeftScript] = useState('')
+  const [dragonFlyRightScript, setdragonFlyRightScript] = useState('')
+  const dragonFlyLeftScriptRef = useRef();
+  const dragonFlyRightScriptRef = useRef();
+  const intervalID = useRef(null);
+
+  const setupState = () => {
+    axios.get(DRAGON_FLY_SETUP_STATE)
+      .then(response=>{
+        if (response.statusText == 'OK'){
+          setdeviceSweepSweepIntervalCount(0)
+          setdeviceSweep(response.data.success.Deviceses)
+          toast.success(`🕺💕🦋 ${response.data.success.message}`,toastoptions);
+        }
+        else{
+          setdeviceSweep({})
+          setdeviceSweepSweepIntervalCount(state => state+1)
+          toast.error(` 👹🛑 ${response.data.success.message}!..${response.data.success.Deviceses}`,toastoptions);
+        }
+      })
+      .catch(err=> 
+      {
+        console.log(err)
+        setdeviceSweepSweepIntervalCount(state => state+1)
+        if(err.response.data.error){
+          const error = err.response.data.error
+          if (error.message){
+            setdeviceSweep({})
+            toast.error(` ✋🛑 ${error.message}!..${error.Deviceses}`,toastoptions);
+          }
+          
+          else{
+            setdeviceSweep({})
+            toast.error(` ✋🥵💩 ${error}!..`,toastoptions);
+            
+          }
+        }
+      }
+      )
+  }
+    // dragonFlyLeftScriptSubmit 
+    const dragonFlyLeftScriptSubmit = e => {
+      e.preventDefault()
+      const url = DRAGON_FLY_LEFT_SPEAKER_SCRIPT_URL;
+      const formData = new FormData();
+      formData.append('file', dragonFlyLeftScript);
+      formData.append('fileName', dragonFlyLeftScript.name);
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      };
+      axios.post(url, formData, config).then((response) => {
+        if (response.statusText == 'OK'){
+          dragonFlyLeftScriptRef.current.value = ''
+          toast.success(`💖💃 ${response.data.success}`,toastoptions);
+        }
+        else{
+          toast.error(' 👹🛑 Error in uploading file!..',toastoptions);
+        }
+      })
+      .catch(error=> 
+        
+      {
+        toast.error(' 👻 Somthing went wrong!..', toastoptions);
+      }
+      )
+  
+    }
+    const dragonFlyRightScriptSubmit = e => {
+      e.preventDefault()
+      const url = DRAGON_FLY_RIGHT_SPEAKER_SCRIPT_URL;
+      const formData = new FormData();
+      formData.append('file', dragonFlyRightScript);
+      formData.append('fileName', dragonFlyRightScript.name);
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      };
+      axios.post(url, formData, config).then((response) => {
+        if (response.statusText == 'OK'){
+          dragonFlyRightScriptRef.current.value = ''
+          toast.success(`💝🏖️🥳 ${response.data.success}`,toastoptions);
+        }
+        else{
+          toast.error(' 👹🛑 Error in uploading file!..',toastoptions);
+        }
+      })
+      .catch(error=> 
+        
+      {
+        toast.error(' 👻 Somthing went wrong!..', toastoptions);
+      }
+      )
+  
+    }
+    useEffect(() => {
+      intervalID.current = setInterval(() => {
+        if(deviceSweepIntervalCount < 5){
+          setupState()
+        }
+        else{
+          clearInterval(intervalID.current)
+          intervalID.current = null
+        }
+     }, 10000);
+     return () => clearInterval(intervalID.current);
+    }, [setupState])
+
   return (
     <motion.div
       className="flex flex-col gap-6 bg-gray-800 bg-opacity-50 backdrop-blur-md overflow-hidden shadow-lg  border border-gray-700  rounded-xl p-10 "
       whileHover={{ y: -5, boxShadow: "0 30px 60px -18px rgba(0,0,0,0.6)" }}
     >
       <div className="flex items-center gap-6 ">
-        <button className="w-7 h-7 rounded-full bg-red-500 shadow-xl shadow-rose-400  border-5 border-rose-400"></button>
+        <button className= {` w-7 h-7 rounded-full  shadow-xl   ${Object.keys(deviceSweep).length == 0 ? "bg-red-500 shadow-rose-400  border-5 border-rose-400" :"bg-green-600 shadow-green-300 border-5 border-emerald-300"  } `} onClick={setupState}></button>
         <h1 className="mt-1 text-xl font-semibold text-gray-400">
-          Config IVM6310 :
+          Config Dragon fly IVM6310 :
         </h1>
       </div>
-      <form action="" className="flex flex-row gap-6 items-center">
-        <div>
-          <p className="text-lg font-bold text-custom-pink">5.5 V</p>
-        </div>
-        <input type="number" placeholder="Set Vbais 5.0 .." className="p-2 px-4 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"/>
-        <button className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-custom-light-blue hover:border-collapse hover:bg-custom-light-blue hover:text-gray-100 ">
-            Update</button>
-      </form>
-      <form action="" className="flex flex-row gap-6 items-center">
-        <div>
-          <p className="text-lg font-bold text-custom-light-inventvm-color">5.5 V</p>
-        </div>
-        <input type="number" placeholder="Set Vbso 5.0 ..." className="p-2 px-4 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue"/>
-        <button className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-custom-blue hover:border-collapse hover:bg-custom-blue hover:text-gray-100 ">Update</button>
-      </form>
-      <form action="" className="flex flex-col gap-0 items-start">
-      <p className="text-sm font-bold text-gray-400" for='startup_script'>IVM6310 Startup script .csv/.json</p>
+      <form action="" className="flex flex-col gap-0 items-start" onSubmit={dragonFlyLeftScriptSubmit}>
+      <p className="text-sm font-bold text-gray-400" htmlFor='startup_script'>IVM6310 Left Speaker .csv/.json</p>
         <div className="flex flex-row gap-6 items-center"> 
-        <input  placeholder="" className= "flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" id="startup_script" type="file"/>
-        <button className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-fuchsia-500 hover:border-collapse hover:bg-fuchsia-500 hover:text-gray-100 ">Update</button>
+        <input  
+          onChange={(e) => setdragonFlyLeftScript(e.target.files[0])}
+          placeholder="" 
+          ref={dragonFlyLeftScriptRef}
+        className= "flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" id="startup_script" type="file"/>
+        <button 
+        type="submit"
+        className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-fuchsia-500 hover:border-collapse hover:bg-fuchsia-500 hover:text-gray-100 ">Update</button>
         </div>
       </form>
-      <form action="" className="flex flex-col gap-0 items-start">
-      <p className="text-sm font-bold text-gray-400" for='startup_script'>IVM6310 Shutdown script .csv/.json</p>
+      <form action="" className="flex flex-col gap-0 items-start" onSubmit={dragonFlyRightScriptSubmit}>
+      <p className="text-sm font-bold text-gray-400" htmlFor='startup_script'>IVM6310 Right Speaker script .csv/.json</p>
         <div className="flex flex-row gap-6 items-center"> 
-        <input  placeholder="" className= "flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" id="startup_script" type="file"/>
-        <button className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-pink-600 hover:border-collapse hover:bg-pink-600 hover:text-gray-100 ">Update</button>
+        <input  
+          onChange={(e) => setdragonFlyRightScript(e.target.files[0])}
+          placeholder="" 
+          ref={dragonFlyRightScriptRef}
+          className= "flex text-gray-400 dark:placeholder-gray-700 p-2 px-1 bg-gray-900 rounded-lg [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none  focus:outline-none  focus:ring-2 focus:border-custom-blue" id="startup_script" type="file"/>
+        <button 
+        type="submit"
+        className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-pink-600 hover:border-collapse hover:bg-pink-600 hover:text-gray-100 ">Update</button>
         </div>
       </form>
-
-    <div className="flex place-items-end">
-       <label class="inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" />
-          <div class="relative w-10 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-2
-           peer-focus:ring-slate-500 dark:peer-focus:ring-bg-rose-700 rounded-full peer
-            dark:bg-rose-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-             peer-checked:after:border-white after:content-[''] after:absolute 
-             after:top-[2px] after:start-[2px] after:bg-white 
-             after:border-gray-300 after:border after:rounded-full after:h-5 
-             after:w-5 after:transition-all
-           dark:border-gray-600 peer-checked:bg-emerald-500"></div>
-          <span class="ms-3 text-sm font-bold text-gray-400 dark:text-gray-300">Start / End</span>
-        </label>
-    </div>
     </motion.div>
   );
 };

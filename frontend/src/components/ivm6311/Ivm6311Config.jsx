@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import StatePool from 'state-pool';
 import axios from 'axios';
 import { ToastContainer, toast,Bounce } from 'react-toastify';
-import { ADC_CHECK_URL, POWERUP_ALL_SCRIPT_URL, POWERDOWN_ALL_SCRIPT_URL, DEVICE_SWEEP_URL,IVM_POWERDOWN_SCRIPT_URL,IVM_POWERUP_SCRIPT_URL,SET_POTVALUE_URL, START_END_URL } from "./constants";
+import {GET_SETUP_STATE,SLAVE_DEVICES,START_END_IVM_ONLY_URL, ADC_CHECK_URL, POWERUP_ALL_SCRIPT_URL, POWERDOWN_ALL_SCRIPT_URL, DEVICE_SWEEP_URL,IVM_POWERDOWN_SCRIPT_URL,IVM_POWERUP_SCRIPT_URL,SET_POTVALUE_URL, START_END_URL } from "./constants";
 // import the device state
 import {initialDeviceStatus} from '../context/Globalstate'
 import {toastoptions} from "../toast/constants";
@@ -11,9 +11,10 @@ import {toastoptions} from "../toast/constants";
 const Ivm6311Config = () => {
 
   const [deviceState, setDeviceState, updateDeviceState] = StatePool.useState(initialDeviceStatus);
-  const [deviceSweep, setdeviceSweep] = useState({"dummy":"dummy"})
-  const [vbsoAdcValue, setvbsoAdcValue] = useState(4.84)
-  const [vbiasAdcValue, setvbiasAdcValue] = useState(6.25)
+  const [deviceSweep, setdeviceSweep] = useState({})
+  const [deviceSweepCount, setdeviceSweepCount] = useState(0)
+  const [vbsoAdcValue, setvbsoAdcValue] = useState(0.01)
+  const [vbiasAdcValue, setvbiasAdcValue] = useState(0.01)
   const [vbaisPotValue, setvbaisPotValue] = useState('')
   const [vbsoPotValue, setvbsoPotValue] = useState('')
   const [ivmPowerupScript, setivmPowerupScript] = useState('')
@@ -26,104 +27,133 @@ const Ivm6311Config = () => {
   const powerupAllScriptRef = useRef();
   const powerupdownAllScriptRef = useRef();
 
+  
+  const setupState = () => {
+    axios.get(GET_SETUP_STATE)
+      .then(response=>{
+        const data = response.data
+        if (response.statusText !== "OK"){
+        }
+        else{
+          if(data.success){
+            updateDeviceState(state=>{
+              state.onlyivm = data.success.deviceState.onlyivm;
+              state.state = data.success.deviceState.state;
+            })
+          } 
+        }
+      })
+      .catch(
+        error => {}
+      )
+  }
+  
+  
   // Device state 
   const statusCheck = () =>{
     axios.get(DEVICE_SWEEP_URL)
     .then(response=>{
       const data = response.data
       if (response.statusText !== "OK"){
-        throw new Error(data.error);
       }
       else{
         if(data.success){
-          setdeviceSweep({})
-
-        } 
-        else{
-          setdeviceSweep(data.error)
+          setdeviceSweep(data.success.Deviceses)
+          setdeviceSweepCount(0)
+          setvbsoAdcValue(data.success.vbso )
+          setvbiasAdcValue(data.success.vbias )
         } 
       }
     })
-    .catch()
+    .catch(
+      (error)=> {
+        if (error.response.data.error == 'MCP not Connected') {
+          setdeviceSweepCount(count => count +1)
+          if ( deviceSweepCount > 10){
+            setdeviceSweep({})
+            setvbsoAdcValue(0.01 )
+            setvbiasAdcValue(0.01 )
+          }
+
+        }
+      }
+    )
   }
 
-  const AdcCheck = (addr=41)=>{
-    if (addr === 41){
-      axios.get(ADC_CHECK_URL+41)
+  const AdcCheck = (addr=SLAVE_DEVICES.VBSOADC)=>{
+    if (addr === SLAVE_DEVICES.VBSOADC){
+      axios.get(ADC_CHECK_URL+parseInt(SLAVE_DEVICES.VBSOADC,16))
       .then(response=>{
         const data = response.data
-        if (response.statusText !== "OK"){
-          throw new Error(data.error);
-        }
-        else{
           if(data.success){
             setvbsoAdcValue(data.success.adc)
   
           } 
           else{
-            setvbsoAdcValue(0)
+            setvbsoAdcValue(0.01)
           } 
         }
+      )
+      .catch(error =>  {
+        // if (error.response.data == 'MCP not Connected'){
+        //   setvbsoAdcValue(0.01)
+        // }
       })
-      .catch(()=> {} )
     }
 
-    else if (addr===24){
-      axios.get(ADC_CHECK_URL+24)
+    else if (addr===SLAVE_DEVICES.VBAISADC){
+      axios.get(ADC_CHECK_URL+parseInt(SLAVE_DEVICES.VBAISADC,16))
       .then(response=>{
         const data = response.data
-        if (response.statusText !== "OK"){
-          throw new Error(data.error);
-        }
-        else{
           if(data.success){
             setvbiasAdcValue(data.success.adc)
-  
+            setVbiasPotValue(null)
+
           } 
           else{
-            setvbiasAdcValue(0)
+            setvbiasAdcValue(0.01)
           } 
-        }
+
       })
-      .catch()
-    }
-    else{
-      // defualt condition 
-      setvbiasAdcValue(0.01)
-      setvbsoAdcValue(0.01)
+      .catch(error =>  {
+        // if (error.response.data){
+        //   setvbsoAdcValue(0.01)
+        // }
+      })
     }
   }
 
   const setVbsoPotValue = e =>{
     e.preventDefault();
-    const vbias = {
-      "potAddr":"0x2F",
-      "adcAddr":"0x29",
-      "value":vbsoPotValue,
+    const vbso = {
+      "potAddr":SLAVE_DEVICES.VBSOPOT,
+      "adcAddr":SLAVE_DEVICES.VBSOADC,
+      "value":vbsoPotValue.toString('hex'),
     }
-
-    axios.post(SET_POTVALUE_URL, vbias)
+    axios.post(SET_POTVALUE_URL, vbso)
       .then(response => {
         const data = response.data
-        if (response.statusText !== "OK"){
-          throw new Error(data.error);
-        }
-        else{
           if(data.success){
             setvbsoAdcValue(data.success.adc)
+            setvbsoPotValue('')
   
           } 
-        }
       })
-      .catch()
-    setvbsoPotValue('')
+      .catch(
+        error=>{
+          if (error.success){
+            setvbsoAdcValue(error.success.adc)
+            setvbsoPotValue('')
+          }
+        }
+      )
   }
 
   const setVbiasPotValue = e =>{
     e.preventDefault();
     const vbias = {
-      "potAddr":"0x2D",
-      "adcAddr":"0x18",
+      "potAddr":SLAVE_DEVICES.VBAISPOT,
+      "adcAddr":SLAVE_DEVICES.VBAISADC,
       "value":vbaisPotValue,
     }
 
@@ -131,37 +161,46 @@ const Ivm6311Config = () => {
       .then(response => {
         const data = response.data
         if (response.statusText !== "OK"){
-          throw new Error(data.error);
+
         }
         else{
           if(data.success){
             setvbiasAdcValue(data.success.adc)
-  
+            setvbaisPotValue('')
           } 
         }
       })
-      .catch()
-    setvbaisPotValue('')
+      .catch(
+        error=> {
+          if(data.success){
+            setvbiasAdcValue(data.success.adc)
+            setvbaisPotValue('')
+          } 
+        }
+      )
   }
 
   useEffect(() => {
-    // const statuscheckInterval = setInterval(() => {
-    //   statusCheck();
-     
-    // }, 6000);
-    // const vbsoADCkInterval = setInterval(() => {
-    //   AdcCheck(41);
-    // }, 6000);
-    // const vbiasADCkInterval = setInterval(() => {
-    //   AdcCheck(24);
-    // }, 6000);
+    const setupStatus = setInterval(() => {
+      setupState();
+    }, 10000);
+    const statuscheckInterval = setInterval(() => {
+      statusCheck();
+    }, 6000);
+    const vbsoADCkInterval = setInterval(() => {
+      AdcCheck(SLAVE_DEVICES.VBSOADC);
+    }, 6000);
+    const vbiasADCkInterval = setInterval(() => {
+      AdcCheck(SLAVE_DEVICES.VBAISADC);
+    }, 6000);
 
-    //  return ()=>{
+     return ()=>{
        
-    //    clearInterval(statuscheckInterval);
-    //    clearInterval(vbsoADCkInterval);
-    //    clearInterval(vbiasADCkInterval);
-    // }
+       clearInterval(setupStatus);
+       clearInterval(statuscheckInterval);
+       clearInterval(vbsoADCkInterval);
+       clearInterval(vbiasADCkInterval);
+    }
   }, [statusCheck,AdcCheck])
 
   // power up script for the ivm device 
@@ -281,18 +320,53 @@ const Ivm6311Config = () => {
     // use the device update fucntion instead of the setStateDeviceState 
     updateDeviceState(state=>{
       state.state = e.target.checked;
+      state.onlyivm = state.state;
     })
     axios.post(START_END_URL, deviceState)
       .then(response => {
         const data = response.data
         if (response.statusText !== "OK"){
-          throw new Error(data.error);
+
         }
         else{
           if(data.success){
-            console.log(data.success)
+            setvbsoAdcValue(data.success.vbso)
+            setvbiasAdcValue(data.success.vbias)
+            if ( deviceState.state) {
+              toast.warning(`🥳👏 All Devices Truned off > vbso : ${response.data.success.vbso}V  vbais : ${response.data.success.vbias}V`,toastoptions);
+            }
+            else{
+              toast.info(`🥳👏 All Devices Started > vbso : ${response.data.success.vbso}V  vbais : ${response.data.success.vbias}V`,toastoptions);
+
+            }
+          } 
+        }
+      })
+      .catch()
+
+  }
+  const startEndIvmOnly = e =>{
+    // use the device update fucntion instead of the setStateDeviceState 
+    updateDeviceState(state=>{
+      state.onlyivm = e.target.checked;
+    })
+    axios.post(START_END_IVM_ONLY_URL, deviceState)
+      .then(response => {
+        const data = response.data
+        if (response.statusText !== "OK"){
+
+        }
+        else{
+          if(data.success){
               setvbsoAdcValue(data.success.vbso)
               setvbiasAdcValue(data.success.vbias)
+              if ( deviceState.onlyivm) {
+                toast.warning(`🥳👏 IVM6311 Truned off > vbso : ${response.data.success.vbso}V  vbais : ${response.data.success.vbias}V`,toastoptions);
+              }
+              else{
+                toast.info(`🥳👏 IVM6311 Started > vbso : ${response.data.success.vbso}V  vbais : ${response.data.success.vbias}V`,toastoptions);
+  
+              }
           } 
         }
       })
@@ -305,7 +379,7 @@ const Ivm6311Config = () => {
       whileHover={{ y: -5, boxShadow: "0 30px 60px -18px rgba(0,0,0,0.6)" }}
     >
       <div className="flex items-center gap-6 ">
-        <button className= {deviceSweep.length ?  "w-7 h-7 rounded-full bg-green-600 shadow-xl shadow-green-300 border-5 border-emerald-300" : "w-7 h-7 rounded-full bg-red-500 shadow-xl shadow-rose-400  border-5 border-rose-400"} onClick={()=>statusCheck()}></button>
+        <button className= {` w-7 h-7 rounded-full  shadow-xl   ${Object.keys(deviceSweep).length == 0 ? "bg-red-500 shadow-rose-400  border-5 border-rose-400" :"bg-green-600 shadow-green-300 border-5 border-emerald-300"  } `} onClick={()=>statusCheck()}></button>
         <h1 className="mt-1 text-xl font-semibold text-gray-400">
           Config IVM6311 :
         </h1>
@@ -313,7 +387,7 @@ const Ivm6311Config = () => {
       {/* Vbias value set form  */}
       <form action="" className="flex flex-row gap-6 items-center" onSubmit={setVbiasPotValue}>
         <div>
-          <p className="text-lg font-bold text-custom-pink items-start">{vbiasAdcValue}V</p>
+          <p className="text-lg font-bold text-custom-pink items-start">{parseFloat(vbiasAdcValue)}V</p>
         </div>
         <input name="vbias" type="text" 
         placeholder="Set Vbais code .." 
@@ -333,10 +407,10 @@ const Ivm6311Config = () => {
       {/* Vbso value set form  */}
       <form action="" className="flex flex-row gap-6 items-center" onSubmit={setVbsoPotValue}>
         <div>
-          <p className="text-lg font-bold text-custom-light-inventvm-color items-start">{vbsoAdcValue}V</p>
+          <p className="text-lg font-bold text-custom-light-inventvm-color items-start">{parseFloat(vbsoAdcValue)}V</p>
         </div>
         <input
-         type="number" 
+         type="text" 
          placeholder="Set Vbso code ..." 
          pattern="[a-fA-F0-9]+"
          value={vbsoPotValue}
@@ -404,6 +478,7 @@ const Ivm6311Config = () => {
       </form>
       {/* Start/Stop button  */}
     <div className="flex place-items-end gap-2">
+    {/* 
     <div className="flex items-center mb-4">
     <input id="default-checkbox" type="checkbox" 
     checked={deviceState.onlyivm}
@@ -412,7 +487,21 @@ const Ivm6311Config = () => {
     })}
     className="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
     <label htmlFor="default-checkbox" className="ms-2 text-sm font-bold text-gray-900 dark:text-gray-400">only Ivm</label>
-    </div>
+    </div> */}
+    <div className="flex items-center mb-4">
+       <label className="inline-flex items-center cursor-pointer">
+          <input type="checkbox"  checked={deviceState.onlyivm} className="sr-only peer" onChange={startEndIvmOnly} />
+          <div className="relative w-11 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-2
+           peer-focus:ring-slate-500 dark:peer-focus:ring-bg-rose-700 rounded-full peer
+            dark:bg-rose-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+             peer-checked:after:border-white after:content-[''] after:absolute 
+             after:top-[2px] after:start-[2px] after:bg-white 
+             after:border-gray-300 after:border after:rounded-full after:h-5 
+             after:w-5 after:transition-all
+           dark:border-gray-600 peer-checked:bg-emerald-500"></div>
+          <span className="ms-3 text-sm font-bold text-gray-400 dark:text-gray-300">IVM Turn ON/ OFF</span>
+        </label>
+       </div>
        <div className="flex items-center mb-4">
        <label className="inline-flex items-center cursor-pointer">
           <input type="checkbox"  checked={deviceState.state} className="sr-only peer" onChange={startEnd} />
@@ -424,7 +513,7 @@ const Ivm6311Config = () => {
              after:border-gray-300 after:border after:rounded-full after:h-5 
              after:w-5 after:transition-all
            dark:border-gray-600 peer-checked:bg-emerald-500"></div>
-          <span className="ms-3 text-sm font-bold text-gray-400 dark:text-gray-300">Start / End</span>
+          <span className="ms-3 text-sm font-bold text-gray-400 dark:text-gray-300"> All Start / End</span>
         </label>
        </div>
     </div>

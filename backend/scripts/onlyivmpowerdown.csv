@@ -12,5 +12,3 @@
 10,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 19, DATA: 00,,,
 11,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe , DATA: 0,,,COM: Set pag0
 12,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 19, DATA: 00,,,
-13,WR-Reg, CHECK: O, PAGE: 0, SAD: 34, ADD: 8, DATA: 13,,,COM: mute ADI
-14,WR-Reg, CHECK: O, PAGE: 0, SAD: 36, ADD: 8, DATA: 13,,,COM: mute ADI
