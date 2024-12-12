@@ -29,7 +29,7 @@ def Ivm6310_dragonfly_setup():
             # check for the salve devices are connected 
             if notfound_slave_addresses:
                 log.error(f'Deviceses are not found : {notfound_slave_addresses}')
-                return jsonify({'error':{'message':'Devices not Found','Deviceses' : notfound_slave_addresses}}),500
+                return jsonify({'error':{'message':'Devices not Found','Deviceses' : str(notfound_slave_addresses)}}),500
             else:
                 [LF_Speaker,RH_Speaker]=list(DEVICE.DRAGONFLY.keys())
                 # get the status of the slaves 

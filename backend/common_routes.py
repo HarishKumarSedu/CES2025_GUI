@@ -58,7 +58,6 @@ def IVM6310_Dragonfly_demo_slaves(device=None):
             sleep(0.01)
         except EasyMCP2221.exceptions.NotAckError:
             adresses.append(addr)
-            pass
     return adresses
 
 # decorator to check weather mcp connected or not 
