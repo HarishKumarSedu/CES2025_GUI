@@ -11,7 +11,7 @@ from werkzeug.utils import secure_filename
 import re 
 import pandas as pd 
 from io import StringIO
-from common_routes import slaves,device_check
+from common_routes import IVM6311_demo_slaves,write_into_slaves,allowed_file
 from time import sleep
 
 DEVICE = read_yaml(Path('config/DeviceAddress.yaml'))
@@ -114,11 +114,7 @@ def get_adcVbus__Voltage(addr):
         log.error(f'MCP not Connected')
         return jsonify({'error':'MCP not Connected'}),500
 
-app.config['UPLOAD_FOLDER'] = './data'
-ALLOWED_EXTENSIONS = {'txt','csv'}
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @app.route('/ivm6311/powerup-script-ivm-only', methods=['GET', 'POST'])
 def ivmpowerup_script():
@@ -271,7 +267,7 @@ def start__end():
     device = get_device() 
     if device:
         if request.method == 'POST':
-            notfound_slave_addresses = slaves(device=device)
+            notfound_slave_addresses = IVM6311_demo_slaves(device=device)
             if notfound_slave_addresses:
                 log.error(f'Deviceses are not found : {notfound_slave_addresses}')
                 return jsonify({'error':{'Not Found' : notfound_slave_addresses}}),500
@@ -279,11 +275,11 @@ def start__end():
                 state = request.json.get('state')
                 if not state :
                     log.info(f'Powerup Sequence initiated for all devices')
-                    write_into_slaves('scripts/powerupall.csv')
+                    write_into_slaves(device=device,scriptPath='scripts/powerupall.csv')
                 elif  state:
 
                     log.info(f'Powerdown Sequence initiated for all devices')
-                    write_into_slaves('scripts/powerdownall.csv')
+                    write_into_slaves(device=device,scriptPath='scripts/powerdownall.csv')
                 else :
                     log.info(f'Powerdown Sequence initiated')
 
@@ -302,7 +298,7 @@ def start__end__ivmonly():
     device = get_device() 
     if device:
         if request.method == 'POST':
-            # notfound_slave_addresses = slaves(device=device)
+            # notfound_slave_addresses = IVM6311_demo_slaves(device=device)
             notfound_slave_addresses = []
             if notfound_slave_addresses:
                 log.error(f'Deviceses are not found : {notfound_slave_addresses}')
@@ -311,10 +307,10 @@ def start__end__ivmonly():
                 onlyivm = request.json.get('onlyivm')
                 if not  onlyivm:
                     log.info(f'only ivm Powerup Sequence initiated')
-                    write_into_slaves('scripts/onlyivmpowerup.csv')
+                    write_into_slaves(device=device,scriptPath='scripts/onlyivmpowerup.csv')
                 elif  onlyivm:
                     log.info(f'only ivm Powerdown Sequence initiated')
-                    write_into_slaves('scripts/onlyivmpowerdown.csv')
+                    write_into_slaves(device=device,scriptPath='scripts/onlyivmpowerdown.csv')
                 else :
                     log.info(f'Powerdown Sequence initiated')
 
@@ -327,37 +323,3 @@ def start__end__ivmonly():
         log.error(f'MCP not Connected')
         return jsonify({'error':'MCP not Connected'}),500
 
-def write_into_slaves(scriptPath=""):
-    device = get_device() 
-    # audio_slaves = {key:value for key,value in DEVICE.I2C.items() if key  in ['IVM6311_1','IVM6311_2','ADI_1','ADI_2']}
-    if scriptPath:
-        data = pd.read_csv(scriptPath)
-        data.reset_index(inplace=True)
-        for index, row in data.iterrows():
-            sleep(0.01)
-            if row['Command'] == 'WR-Reg':
-                device_data = row['DATA'].split('DATA:')[-1].strip()
-                device_data = [int(i, 16) for i  in device_data.split(' ') ]  if (' ' in device_data)  else [int(device_data,16)]
-                page=int(row['Page'].split('PAGE:')[-1].strip(), 16)
-                addr=int(row['ADD'].split('ADD:')[-1].strip(), 16)
-                sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
-                # if sad in DEVICE.AUDIO.values():
-                #     device_data.insert(0,page) # insert the page address 
-                device_data.insert(0,addr) # put register address at the begining
-                # print('sad =',hex(sad),'data = ',device_data)
-                device.I2C_Slave(sad).write(device_data)
-            if row['Command'] == 'WR-bit':
-                device_data = int(row['DATA'].split('DATA:')[-1].strip(),16)
-                msb = int(row['MSB'].split('MSB:')[-1].strip(),16)
-                lsb = int(row['LSB'].split('LSB:')[-1].strip(),16)
-                addr=int(row['ADD'].split('ADD:')[-1].strip(), 16)
-                sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
-                slave = device.I2C_Slave(sad)
-                device_read_data=int.from_bytes(slave.read_register(addr),'little')
-                mask = ~(((1 << msb - msb + 1)) -1) << lsb
-                device_data = [(device_read_data & mask ) | device_data << lsb ]
-                # if sad in DEVICE.AUDIO.values():
-                #     device_data.insert(0,page) # insert the page address 
-                device_data.insert(0,addr) # put register address at the begining
-                # print('sad =',hex(sad),'data = ',device_data)
-                slave.write(device_data)
