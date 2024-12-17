@@ -1,0 +1,14 @@
+,Command,Check,Page,SAD,ADD,DATA,MSB,LSB,Comment
+0,WR-Reg, CHECK: O, PAGE: 0, SAD: 2f, ADD: 2, DATA: 34,,,COM: VBSO to 6V 
+1,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 1,,,COM: Set pag 1
+2,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 13, DATA: 80 80,,,
+3,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 18, DATA: 10 00,,,
+4,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe, DATA: 1,,,COM: set pag 1
+5,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 13, DATA: 80 80,,,
+6,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 18, DATA: 10 00,,,
+7,WR-Reg, CHECK: O, PAGE: 0, SAD: 2f, ADD: 02, DATA: 46,,,COM: VBSO to 5V
+8,WR-Reg, CHECK: O, PAGE: 0, SAD: 2d, ADD: 02, DATA: 2f,,,COM: VBIAS to 6.3V
+9,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: fe, DATA: 0,,,COM: set pag 0
+10,WR-Reg, CHECK: O, PAGE: 0, SAD: 6C, ADD: 19, DATA: 00,,,
+11,WR-Reg, CHECK: O, PAGE: 0, SAD: 6d, ADD: fe , DATA: 0,,,COM: Set pag0
+12,WR-Reg, CHECK: O, PAGE: 0, SAD: 6D, ADD: 19, DATA: 00,,,
