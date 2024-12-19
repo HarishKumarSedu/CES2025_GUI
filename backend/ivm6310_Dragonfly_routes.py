@@ -89,7 +89,6 @@ def Ivm6310_dragonfly_setup():
                 else:
                     return jsonify({'success':{'message':'IVM6310 Dragon fly demo stopped','Deviceses':DEVICE.DRAGONFLY,'state':True}}),500
             else:
-                print(state)
                 for addr in  list(DEVICE.DRAGONFLY.values()):
                     slave = device.I2C_Slave(addr=addr)
                     slave.write([0xFE,0x00])
@@ -121,7 +120,7 @@ def IVM6310_Status(device:EasyMCP2221):
         def reg_value_check ( page,reg,value) : 
             slave.write([0xFE,page])
             data = hex(int.from_bytes(slave.read_register(reg),'little'))
-            print(f'page = {page}, reg = {hex(reg)}, data = {data} status : {data == hex(value)} ')
+            # print(f'page = {page}, reg = {hex(reg)}, data = {data} status : {data == hex(value)} ')
             return  data == hex(value)
         
         if reg_value_check(page=0,reg=0x15,value=0x1D) & \
