@@ -47,6 +47,7 @@ const Ivm6311Config = () => {
         if (response.statusText !== "OK") {
         } else {
           if (data.success) {
+            
             updateDeviceState((state) => {
               state.onlyivm = data.success.deviceState.onlyivm;
               state.state = data.success.deviceState.state;

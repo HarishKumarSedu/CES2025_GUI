@@ -66,16 +66,16 @@ const IVM6310 = () => {
           transition={{ duration: 1 }}
         >
           <div onClick={handleCircuitOpen}>
-          <StatCard name="Schematic" icon={CircuitBoard} value="IVM6311" color="#6366f1"/>
+          <StatCard name="Schematic" icon={CircuitBoard} value="IVM6310" color="#6366f1"/>
           </div>
           <div onClick={handleLayoutOpen}>
-          <StatCard name="Layout" icon={Cpu} value="IVM6311" color="#8B5CF6" />
+          <StatCard name="Layout" icon={Cpu} value="IVM6310" color="#8B5CF6" />
           </div>
           <div onClick={handlesetFunctionDiagOpen}>
-          <StatCard name="Functional Daigram" icon={BrainCircuit} value="IVM6311" color="#EC4899"/>
+          <StatCard name="Functional Daigram" icon={BrainCircuit} value="IVM6310" color="#EC4899"/>
           </div >
           <div onClick={handlesetNoteOpen}>
-          <StatCard name="Note" icon={NotebookText} value="IVM6311" color="#10B881"/>
+          <StatCard name="Note" icon={NotebookText} value="IVM6310" color="#10B881"/>
           </div>
           <div>
       <Modal
