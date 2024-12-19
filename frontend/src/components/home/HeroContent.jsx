@@ -16,7 +16,7 @@ const HeroContent = () => {
           <span className='text-gray-200 font-bold italic'>INVENTVM</span>  is the leading Italian fabless IC company.
           We are located in Pavia, Italy, in the heart of the Ticino River Silicon Valley. <br/><br/>
             
-          Our core strength is simple: continuous innovation through breakthrough ideas. Whether it is our PiezoDrive™ piezo amplifier and DSP technology, VoltaTek™ BMS platform, or turnkey IC services for our commercial partners, we push the boundaries of technology in everything we do, Efficientl,. Reliably.<br/><br/>
+          Our core strength is simple: continuous innovation through breakthrough ideas. Whether it is our PiezoDrive™ piezo amplifier and DSP technology, VoltaTek™ BMS platform, or turnkey IC services for our commercial partners, we push the boundaries of technology in everything we do, Efficientl, Reliably.<br/><br/>
             
           Founded in 2021 as a result of a management buyout of an existing R&D design center, our specialty is mixed signal IC, DSP algorithms and IP development, with a specific focus on power management and audio.
           </p>
