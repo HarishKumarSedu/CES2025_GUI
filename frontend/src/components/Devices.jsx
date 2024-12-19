@@ -24,7 +24,7 @@ import ivm6312_reference_layout from '../assets/ivm6312_reference_layout.png'
 import ivm6311_reference_layout from '../assets/ivm6311_reference_layout.png'
 import ivm6310_reference_layout from '../assets/ivm6310_reference_layout.png'
 import ivm6303_reference_layout from '../assets/ivm6303_reference_layout.png'
-
+import {motion} from 'framer-motion'
 
 import Footer from "./Footer";
 const content = [
@@ -106,11 +106,16 @@ const Devices = () => {
             <CardBody className="mx-5 mr-5 grid grid-cols-1  ">
               <div className="flex flex-col items-center">
                 
-                <img
+                <motion.img
                 src={content.titleimage}
+                whileHover={
+                  { scale: 1.25, 
+                  }
+               } 
+               transition={{duration: 0.5}}
                 alt="IVM6303"
                 // className={`${ (more&parentExpand) ? "object-scale-down h-[30rem] w-[30rem] rounded-lg " : "object-scale-down h-[30rem] w-[30rem] rounded-lg" } rounded-xl`}
-                className="object-scale-down h-[30rem] w-[30rem] rounded-lg hover:h-[28rem] hover:w-[28rem] " 
+                className="object-scale-down h-[30rem] w-[30rem] rounded-lg " 
               />
               </div>
               {/* <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " /> */}
@@ -147,7 +152,8 @@ const Devices = () => {
                     return (
                       <div key={key} className="flex flex-col items-start justify-start ">
                         <h4 className="font-semibold font-sans text-gray-400 text-lg">{image[0]} :
-                        <img src={image[1]} alt="" className=" m-[1rem] rounded-xl w-[25rem] h-[25rem]"  />
+                        <motion.img 
+                        src={image[1]} alt="" className=" m-[1rem] rounded-xl w-[25rem] h-[25rem]"  />
                         </h4>
                         
                       </div> 
