@@ -31,7 +31,7 @@ def Ivm6310_hap_setup():
                 return jsonify({'error':{'message':'Devices not Found','Deviceses' : str(notfound_slave_addresses)}}),500
             else:
                 log.error(f'Deviceses are  found : {notfound_slave_addresses}')
-                return jsonify({'error':{'message':'Devices  Found','Deviceses' : str(DEVICE.HAP.values())}}),200
+                return jsonify({'success':{'message':'IVM6310 HAP Button demo running','Deviceses':DEVICE.HAP}}),200
             # else:
             #     [LF_Speaker,RH_Speaker]=list(DEVICE.HAP.keys())
                 # get the status of the slaves 
