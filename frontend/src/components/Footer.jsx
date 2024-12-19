@@ -16,7 +16,7 @@ const Footer = () => {
             <span className='italic text-gray-200 font-semibold'>Inventvm Semiconductor SRL, </span> 
           <br/>  Viale Alessandro Brambilla 60,
           <br/>  27100 Pavia, Italy +39 0382 189 0600 ,
-          <br/>  info@inventvm.com | Vat n. 09899780960 </p>
+          <br/>  info@inventvm.com  </p>
         </span>
             </div>
     </div>
