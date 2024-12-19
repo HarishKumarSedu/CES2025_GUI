@@ -84,6 +84,16 @@ def IVM6310_Dragonfly_demo_slaves(device=None):
             adresses.append(addr)
     return adresses
 
+def IVM6310_Hap_demo_slaves(device=None):
+    adresses=[]
+    for addr in DEVICE.HAP.values():
+        try:
+            device.I2C_read(addr)
+            sleep(0.01)
+        except EasyMCP2221.exceptions.NotAckError:
+            adresses.append(addr)
+    return adresses
+
 # decorator to check weather mcp connected or not 
 def device_check(func,device):
     def wrapper():
