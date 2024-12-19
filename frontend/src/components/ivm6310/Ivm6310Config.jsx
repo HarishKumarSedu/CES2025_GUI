@@ -4,7 +4,7 @@ import { Forward } from 'lucide-react';
 import { ToastContainer, toast,Bounce } from 'react-toastify';
 import {toastoptions} from "../toast/constants";
 import axios from "axios";
-import {DRAGON_FLY_RIGHT_SPEAKER_SCRIPT_URL, DRAGON_FLY_LEFT_SPEAKER_SCRIPT_URL,DRAGON_FLY_SETUP_STATE} from './Ivm6310Constants'
+import {DRAGON_FLY_RIGHT_SPEAKER_SCRIPT_URL, DRAGON_FLY_LEFT_SPEAKER_SCRIPT_URL,DRAGON_FLY_SETUP_STATE,START_END_URL} from './Ivm6310Constants'
 // const DRAGON_FLY_LEFT_SPEAKER_SCRIPT_URL = 'http://localhost:5000/ivm6310/dragon-fly-left-script';
 // const DRAGON_FLY_RIGHT_SPEAKER_SCRIPT_URL = 'http://localhost:5000/ivm6310/dragon-fly-right-script';
 // const DRAGON_FLY_SETUP_STATE = 'http://localhost:5000/ivm6310/dragon-fly-setup-state';
@@ -16,13 +16,16 @@ const Ivm6310Config = () => {
   const dragonFlyLeftScriptRef = useRef();
   const dragonFlyRightScriptRef = useRef();
   const intervalID = useRef(null);
+  const [deviceState, setDeviceState] = useState(false)
 
-  const setupState = () => {
+  const setupState = (e) => {
+    
     axios.get(DRAGON_FLY_SETUP_STATE)
       .then(response=>{
         if (response.statusText == 'OK'){
           setdeviceSweepSweepIntervalCount(0)
           setdeviceSweep(response.data.success.Deviceses)
+          setDeviceState(response.data.success.state)
           toast.success(`🕺💕🦋 ${response.data.success.message}`,toastoptions);
         }
         else{
@@ -133,11 +136,47 @@ const Ivm6310Config = () => {
         else{
           clearInterval(intervalID.current)
           intervalID.current = null
+          setDeviceState(false)
         }
      }, 10000);
      return () => clearInterval(intervalID.current);
     }, [setupState])
 
+    const startEnd = (e) => {
+        // use the device update fucntion instead of the setStateDeviceState
+        setDeviceState( e.target.checked);
+        const state = e.target.checked
+        axios
+          .post(DRAGON_FLY_SETUP_STATE, {'state': state})
+          .then((response) => {
+            const data = response.data;
+            if (response.statusText !== "OK") {
+            } else {
+              if (data.success) {
+                if (deviceState.state) {
+                  toast.warning(
+                    `🥳👏 Dragon fly demo is running`,
+                    toastoptions
+                  );
+                } else {
+                  toast.info(
+                    `🥳👏 Dragon fly demo is running`,
+                    toastoptions
+                  );
+                }
+              }
+            }
+          })
+          .catch((error) => {
+            if (error.code == "ERR_NETWORK") {
+              toast.error(` ✋🛑 Server Stoped`, toastoptions);
+              setDeviceState(false)
+            } else {
+              toast.error(" 👻 Somthing went wrong!..", toastoptions);
+              setDeviceState(false)
+            }
+          });
+      };
   return (
     <motion.div
       className="flex flex-col gap-6 bg-gray-800 bg-opacity-50 backdrop-blur-md overflow-hidden shadow-lg  border border-gray-700  rounded-xl p-10 "
@@ -175,6 +214,30 @@ const Ivm6310Config = () => {
         className="w-20 p-1 text-gray-400 bg-gray-800 rounded-full border-2 border-pink-600 hover:border-collapse hover:bg-pink-600 hover:text-gray-100 ">Update</button>
         </div>
       </form>
+      <div className="flex items-center mb-4">
+          <label className="inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              checked={deviceState}
+              className="sr-only peer"
+              onChange={startEnd}
+            />
+            <div
+              className="relative w-11 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-2
+           peer-focus:ring-slate-500 dark:peer-focus:ring-bg-rose-700 rounded-full peer
+            dark:bg-rose-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+             peer-checked:after:border-white after:content-[''] after:absolute 
+             after:top-[2px] after:start-[2px] after:bg-white 
+             after:border-gray-300 after:border after:rounded-full after:h-5 
+             after:w-5 after:transition-all
+           dark:border-gray-600 peer-checked:bg-emerald-500"
+            ></div>
+            <span className="ms-3 text-sm font-bold text-gray-400 dark:text-gray-300">
+              {" "}
+              Start / End
+            </span>
+          </label>
+        </div>
     </motion.div>
   );
 };

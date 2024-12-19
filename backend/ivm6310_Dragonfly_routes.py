@@ -15,7 +15,7 @@ from time import sleep
 
 DEVICE = read_yaml('config/DeviceAddress.yaml')
 
-@app.route('/ivm6310/dragon-fly-setup-state',methods=['GET'])
+@app.route('/ivm6310/dragon-fly-setup-state',methods=['GET','POST'])
 def Ivm6310_dragonfly_setup():
     device = get_device()
     #check weather the mcp is connected or not 
@@ -26,9 +26,10 @@ def Ivm6310_dragonfly_setup():
             notfound_slave_addresses = IVM6310_Dragonfly_demo_slaves(device=device)
             # notfound_slave_addresses = [] # debugging purpose line 
             # check for the salve devices are connected 
+            
             if notfound_slave_addresses:
                 log.error(f'Deviceses are not found : {notfound_slave_addresses}')
-                return jsonify({'error':{'message':'Devices not Found','Deviceses' : str(notfound_slave_addresses)}}),500
+                return jsonify({'error':{'message':'Devices not Found','Deviceses' : str(notfound_slave_addresses)},'state':False}),500
             else:
                 [LF_Speaker,RH_Speaker]=list(DEVICE.DRAGONFLY.keys())
                 # get the status of the slaves 
@@ -48,7 +49,7 @@ def Ivm6310_dragonfly_setup():
                 if (slaves_status[0].get(LF_Speaker) == 'ON') & \
                     (slaves_status[1].get(RH_Speaker) == 'ON') :
                     log.info(f'IVM6310 Dragon fly demo is on')
-                    return jsonify({'success':{'message':'IVM6310 Dragon fly demo running','Deviceses':DEVICE.DRAGONFLY}}),200
+                    return jsonify({'success':{'message':'IVM6310 Dragon fly demo running','Deviceses':DEVICE.DRAGONFLY,'state':True}}),200
                 else:
                     log.error(f'IVM6310 Dragon fly demo is OFF check with hardware')
                     return jsonify({'error':'IVM6310 Dragon fly demo stoped!, please check hardware'}),500
@@ -57,9 +58,52 @@ def Ivm6310_dragonfly_setup():
                     # slaves_status = IVM6310_Status(device=device)
                     # print(slaves_status)
                     # return jsonify({'success':{'message':'IVM6310 Dragon fly demo running','Deviceses':DEVICE.DRAGONFLY}}),200
+        if request.method == 'POST':
+            state = request.json.get('state')
+            if state:
+                [LF_Speaker,RH_Speaker]=list(DEVICE.DRAGONFLY.keys())
+                # get the status of the slaves 
+                slaves_status = IVM6310_Status(device=device)
+                # slaves_status = [{DEVICE.DRAGONFLY.IVM6310_LF:'OFF'},{DEVICE.DRAGONFLY.IVM6310_RH:'OFF'}] # debugging line 
+                if slaves_status[0].get(LF_Speaker) == 'OFF':
+                    # run the Leftdragon fly script 
+                    write_into_slaves(device=device,scriptPath='scripts/DragonFly_left.json')
+                    log.info(f'IVM6310 Dragon fly demo left speaker scripte written')
+                if slaves_status[1].get(RH_Speaker) == 'OFF':
+                    # run the Leftdragon fly script 
+                    write_into_slaves(device=device,scriptPath='scripts/DragonFly_right.json')
+                    log.info(f'IVM6310 Dragon fly demo right speaker scripte written')
+                # get the slaves status after writing script 
+                slaves_status = IVM6310_Status(device=device)
+                # slaves_status = [{DEVICE.DRAGONFLY.IVM6310_LF:'ON'},{DEVICE.DRAGONFLY.IVM6310_RH:'ON'}] # debugging line 
+                for addr in  list(DEVICE.DRAGONFLY.values()):
+                    slave = device.I2C_Slave(addr=addr)
+
+                    slave.write([0xFE,0x00])
+                    slave.write([0x61,0xba])
+                    slave.write([0x19,0x1])
+                if (slaves_status[0].get(LF_Speaker) == 'ON') & \
+                    (slaves_status[1].get(RH_Speaker) == 'ON') :
+                    log.info(f'IVM6310 Dragon fly demo is on')
+                    return jsonify({'success':{'message':'IVM6310 Dragon fly demo running','Deviceses':DEVICE.DRAGONFLY,'state':True}}),200
+                else:
+                    return jsonify({'success':{'message':'IVM6310 Dragon fly demo stopped','Deviceses':DEVICE.DRAGONFLY,'state':True}}),500
+            else:
+                print(state)
+                for addr in  list(DEVICE.DRAGONFLY.values()):
+                    slave = device.I2C_Slave(addr=addr)
+                    slave.write([0xFE,0x00])
+                    slave.write([0x61,0x00])
+                    slave.write([0xFE,0x00])
+                    slave.write([0x19,0x00])
+                return jsonify({'success':{'message':'IVM6310 Dragon fly demo stoped','Deviceses':DEVICE.DRAGONFLY,'state':False}}),200
     else:
         log.error(f'MCP not Connected')
         return jsonify({'error':'MCP not Connected'}),500
+
+@app.route('/ivm6310/dragon-fly-setup-state',methods=['GET'])
+def Ivm6310_dragonfly_start_end():
+    pass
 
 def IVM6310_Status(device:EasyMCP2221):
     slaves = DEVICE.DRAGONFLY
@@ -77,7 +121,7 @@ def IVM6310_Status(device:EasyMCP2221):
         def reg_value_check ( page,reg,value) : 
             slave.write([0xFE,page])
             data = hex(int.from_bytes(slave.read_register(reg),'little'))
-            # print(f'page = {page}, reg = {hex(reg)}, data = {data} status : {data == hex(value)} ')
+            print(f'page = {page}, reg = {hex(reg)}, data = {data} status : {data == hex(value)} ')
             return  data == hex(value)
         
         if reg_value_check(page=0,reg=0x15,value=0x1D) & \
