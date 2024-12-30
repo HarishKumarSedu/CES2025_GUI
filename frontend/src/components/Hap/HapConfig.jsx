@@ -96,7 +96,7 @@ const HapConfig = () => {
               clearInterval(intervalID.current)
               intervalID.current = null
             }
-         }, 10000);
+         }, 100000);
          return () => clearInterval(intervalID.current);
         }, [setupState])
   return (

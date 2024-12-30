@@ -1,0 +1,5384 @@
+[
+  {
+    "type": "MSK_UPD",
+    "addr": 610,
+    "val": 0,
+    "msk": 192,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 610,
+    "val": 0,
+    "msk": 12,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_sample_size to 24 (sample_width)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 609,
+    "val": 0,
+    "msk": 112,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_en_mode to I2C (pattern_enabling_mode)"
+  },
+  {
+    "type": "WRITE",
+    "addr": 611,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_freq to 0 (freq)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 610,
+    "val": 0,
+    "msk": 1,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_freq to 0 (freq)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 609,
+    "val": 12,
+    "msk": 12,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_dis_mode to automatic ramp enabled (pattern_disabling_mode)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 617,
+    "val": 0,
+    "msk": 3,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_vol_sel to 0 (target_volume)"
+  },
+  {
+    "type": "WRITE",
+    "addr": 616,
+    "val": 192,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_vol_sel to 0 (target_volume)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 614,
+    "val": 0,
+    "msk": 127,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_ramp_up_time_step to 0 (volume_ramp_up_ticks)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 615,
+    "val": 0,
+    "msk": 127,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_ramp_down_time_step to 0 (volume_ramp_down_ticks)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 618,
+    "val": 16,
+    "msk": 16,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_phase_inv_2nd to True (pi_2nd)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 618,
+    "val": 0,
+    "msk": 2,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_sign_inv_2nd to False (si_2nd)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 618,
+    "val": 0,
+    "msk": 32,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_phase_inv_3rd to False (pi_3rd)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 618,
+    "val": 0,
+    "msk": 4,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_sign_inv_3rd to False (si_3rd)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 618,
+    "val": 64,
+    "msk": 64,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_phase_inv_4th to True (pi_4th)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 618,
+    "val": 0,
+    "msk": 8,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_sign_inv_4th to False (si_4th)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 609,
+    "val": 0,
+    "msk": 128,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_mode to output_384KHz (output_clock_mode)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 610,
+    "val": 16,
+    "msk": 48,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_sample_rate to 48 (playback_sr)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 614,
+    "val": 0,
+    "msk": 128,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_ramp_time_sel to 2.6us (ramp_time_step_tick)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 610,
+    "val": 2,
+    "msk": 2,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set ptn_playback_mode to once (playback_mode)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 623,
+    "val": 2,
+    "msk": 3,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set haptic_detection_mode to Detection ON and auto playback (haptic_detection_usage)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 622,
+    "val": 48,
+    "msk": 112,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set haptic_detection_th_sel to 80mV (detection_threshold)"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 622,
+    "val": 7,
+    "msk": 7,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "set haptic_filt_sample to 128 samples (detection_filter_samples)"
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 608,
+    "val": 0,
+    "msk": 31,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE",
+    "addr": 512,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 513,
+    "val": 210,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 514,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 515,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 516,
+    "val": 210,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 517,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 518,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 519,
+    "val": 232,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 520,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 521,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 522,
+    "val": 232,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 523,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 524,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 525,
+    "val": 253,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 526,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 527,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 528,
+    "val": 19,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 529,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 530,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 531,
+    "val": 40,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 532,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 533,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 534,
+    "val": 83,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 535,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 536,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 537,
+    "val": 104,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 538,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 539,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 540,
+    "val": 126,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 541,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 542,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 543,
+    "val": 169,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 544,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 545,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 546,
+    "val": 169,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 547,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 548,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 549,
+    "val": 212,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 550,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 551,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 552,
+    "val": 20,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 553,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 554,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 555,
+    "val": 41,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 556,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 557,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 558,
+    "val": 84,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 559,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 560,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 561,
+    "val": 127,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 562,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 563,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 564,
+    "val": 192,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 565,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 566,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 567,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 568,
+    "val": 2,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 569,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 570,
+    "val": 64,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 571,
+    "val": 2,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 572,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 573,
+    "val": 129,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 574,
+    "val": 2,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 575,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 576,
+    "val": 193,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 577,
+    "val": 2,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 578,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 579,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 580,
+    "val": 3,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 581,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 582,
+    "val": 108,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 583,
+    "val": 3,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 584,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 585,
+    "val": 216,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 586,
+    "val": 3,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 587,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 588,
+    "val": 45,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 589,
+    "val": 4,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 590,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 591,
+    "val": 174,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 592,
+    "val": 4,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 593,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 594,
+    "val": 47,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 595,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 596,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 597,
+    "val": 111,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 598,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 599,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 600,
+    "val": 197,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 601,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 602,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 603,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 604,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 605,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 606,
+    "val": 48,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 607,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 608,
+    "val": 1,
+    "msk": 31,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE",
+    "addr": 512,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 513,
+    "val": 134,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 514,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 515,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 516,
+    "val": 219,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 517,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 518,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 519,
+    "val": 49,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 520,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 521,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 522,
+    "val": 114,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 523,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 524,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 525,
+    "val": 178,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 526,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 527,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 528,
+    "val": 242,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 529,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 530,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 531,
+    "val": 51,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 532,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 533,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 534,
+    "val": 93,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 535,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 536,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 537,
+    "val": 158,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 538,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 539,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 540,
+    "val": 179,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 541,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 542,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 543,
+    "val": 158,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 544,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 545,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 546,
+    "val": 179,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 547,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 548,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 549,
+    "val": 201,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 550,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 551,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 552,
+    "val": 201,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 553,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 554,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 555,
+    "val": 201,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 556,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 557,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 558,
+    "val": 201,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 559,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 560,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 561,
+    "val": 179,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 562,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 563,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 564,
+    "val": 158,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 565,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 566,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 567,
+    "val": 136,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 568,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 569,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 570,
+    "val": 115,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 571,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 572,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 573,
+    "val": 72,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 574,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 575,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 576,
+    "val": 29,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 577,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 578,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 579,
+    "val": 242,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 580,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 581,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 582,
+    "val": 221,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 583,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 584,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 585,
+    "val": 135,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 586,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 587,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 588,
+    "val": 92,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 589,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 590,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 591,
+    "val": 28,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 592,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 593,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 594,
+    "val": 198,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 595,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 596,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 597,
+    "val": 134,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 598,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 599,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 600,
+    "val": 91,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 601,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 602,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 603,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 604,
+    "val": 6,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 605,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 606,
+    "val": 175,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 607,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 608,
+    "val": 2,
+    "msk": 31,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE",
+    "addr": 512,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 513,
+    "val": 90,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 514,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 515,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 516,
+    "val": 4,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 517,
+    "val": 5,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 518,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 519,
+    "val": 217,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 520,
+    "val": 4,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 521,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 522,
+    "val": 127,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 523,
+    "val": 4,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 524,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 525,
+    "val": 33,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 526,
+    "val": 4,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 527,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 528,
+    "val": 192,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 529,
+    "val": 3,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 530,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 531,
+    "val": 93,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 532,
+    "val": 3,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 533,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 534,
+    "val": 248,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 535,
+    "val": 2,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 536,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 537,
+    "val": 144,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 538,
+    "val": 2,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 539,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 540,
+    "val": 38,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 541,
+    "val": 2,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 542,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 543,
+    "val": 186,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 544,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 545,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 546,
+    "val": 76,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 547,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 548,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 549,
+    "val": 219,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 550,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 551,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 552,
+    "val": 104,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 553,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 554,
+    "val": 0,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 555,
+    "val": 244,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 556,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 557,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 558,
+    "val": 124,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 559,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 560,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 561,
+    "val": 3,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 562,
+    "val": 255,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 563,
+    "val": 253,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 564,
+    "val": 136,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 565,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 566,
+    "val": 252,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 567,
+    "val": 12,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 568,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 569,
+    "val": 251,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 570,
+    "val": 142,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 571,
+    "val": 253,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 572,
+    "val": 251,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 573,
+    "val": 135,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 574,
+    "val": 253,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 575,
+    "val": 251,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 576,
+    "val": 67,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 577,
+    "val": 253,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 578,
+    "val": 248,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 579,
+    "val": 52,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 580,
+    "val": 252,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 581,
+    "val": 248,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 582,
+    "val": 240,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 583,
+    "val": 251,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 584,
+    "val": 246,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 585,
+    "val": 37,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 586,
+    "val": 251,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 587,
+    "val": 245,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 588,
+    "val": 90,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 589,
+    "val": 250,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 590,
+    "val": 245,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 591,
+    "val": 91,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 592,
+    "val": 250,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 593,
+    "val": 243,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 594,
+    "val": 178,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 595,
+    "val": 249,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 596,
+    "val": 242,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 597,
+    "val": 8,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 598,
+    "val": 249,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 599,
+    "val": 241,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 600,
+    "val": 91,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 601,
+    "val": 248,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 602,
+    "val": 239,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 603,
+    "val": 173,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 604,
+    "val": 247,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 605,
+    "val": 238,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 606,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 607,
+    "val": 246,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 608,
+    "val": 3,
+    "msk": 31,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE",
+    "addr": 512,
+    "val": 237,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 513,
+    "val": 77,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 514,
+    "val": 246,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 515,
+    "val": 235,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 516,
+    "val": 155,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 517,
+    "val": 245,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 518,
+    "val": 234,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 519,
+    "val": 231,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 520,
+    "val": 244,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 521,
+    "val": 232,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 522,
+    "val": 50,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 523,
+    "val": 244,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 524,
+    "val": 231,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 525,
+    "val": 125,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 526,
+    "val": 243,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 527,
+    "val": 230,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 528,
+    "val": 198,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 529,
+    "val": 242,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 530,
+    "val": 228,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 531,
+    "val": 14,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 532,
+    "val": 242,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 533,
+    "val": 227,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 534,
+    "val": 86,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 535,
+    "val": 241,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 536,
+    "val": 225,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 537,
+    "val": 156,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 538,
+    "val": 240,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 539,
+    "val": 224,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 540,
+    "val": 226,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 541,
+    "val": 239,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 542,
+    "val": 223,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 543,
+    "val": 40,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 544,
+    "val": 239,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 545,
+    "val": 221,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 546,
+    "val": 109,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 547,
+    "val": 238,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 548,
+    "val": 220,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 549,
+    "val": 178,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 550,
+    "val": 237,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 551,
+    "val": 218,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 552,
+    "val": 246,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 553,
+    "val": 236,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 554,
+    "val": 217,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 555,
+    "val": 59,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 556,
+    "val": 236,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 557,
+    "val": 215,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 558,
+    "val": 127,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 559,
+    "val": 235,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 560,
+    "val": 214,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 561,
+    "val": 195,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 562,
+    "val": 234,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 563,
+    "val": 212,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 564,
+    "val": 7,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 565,
+    "val": 234,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 566,
+    "val": 211,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 567,
+    "val": 76,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 568,
+    "val": 233,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 569,
+    "val": 209,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 570,
+    "val": 145,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 571,
+    "val": 232,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 572,
+    "val": 208,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 573,
+    "val": 214,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 574,
+    "val": 231,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 575,
+    "val": 206,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 576,
+    "val": 27,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 577,
+    "val": 231,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 578,
+    "val": 205,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 579,
+    "val": 98,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 580,
+    "val": 230,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 581,
+    "val": 204,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 582,
+    "val": 168,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 583,
+    "val": 229,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 584,
+    "val": 202,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 585,
+    "val": 240,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 586,
+    "val": 228,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 587,
+    "val": 201,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 588,
+    "val": 56,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 589,
+    "val": 228,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 590,
+    "val": 199,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 591,
+    "val": 130,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 592,
+    "val": 227,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 593,
+    "val": 198,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 594,
+    "val": 204,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 595,
+    "val": 226,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 596,
+    "val": 196,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 597,
+    "val": 23,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 598,
+    "val": 226,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 599,
+    "val": 195,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 600,
+    "val": 100,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 601,
+    "val": 225,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 602,
+    "val": 194,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 603,
+    "val": 178,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 604,
+    "val": 224,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 605,
+    "val": 192,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 606,
+    "val": 1,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 607,
+    "val": 224,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 608,
+    "val": 4,
+    "msk": 31,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE",
+    "addr": 512,
+    "val": 191,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 513,
+    "val": 82,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 514,
+    "val": 223,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 515,
+    "val": 190,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 516,
+    "val": 164,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 517,
+    "val": 222,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 518,
+    "val": 188,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 519,
+    "val": 248,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 520,
+    "val": 221,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 521,
+    "val": 187,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 522,
+    "val": 78,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 523,
+    "val": 221,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 524,
+    "val": 186,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 525,
+    "val": 165,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 526,
+    "val": 220,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 527,
+    "val": 184,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 528,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 529,
+    "val": 219,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 530,
+    "val": 183,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 531,
+    "val": 90,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 532,
+    "val": 219,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 533,
+    "val": 182,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 534,
+    "val": 183,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 535,
+    "val": 218,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 536,
+    "val": 181,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 537,
+    "val": 22,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 538,
+    "val": 218,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 539,
+    "val": 179,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 540,
+    "val": 120,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 541,
+    "val": 217,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 542,
+    "val": 178,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 543,
+    "val": 220,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 544,
+    "val": 216,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 545,
+    "val": 177,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 546,
+    "val": 66,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 547,
+    "val": 216,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 548,
+    "val": 176,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 549,
+    "val": 171,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 550,
+    "val": 215,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 551,
+    "val": 175,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 552,
+    "val": 22,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 553,
+    "val": 215,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 554,
+    "val": 173,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 555,
+    "val": 132,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 556,
+    "val": 214,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 557,
+    "val": 172,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 558,
+    "val": 245,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 559,
+    "val": 213,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 560,
+    "val": 171,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 561,
+    "val": 104,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 562,
+    "val": 213,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 563,
+    "val": 170,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 564,
+    "val": 223,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 565,
+    "val": 212,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 566,
+    "val": 169,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 567,
+    "val": 88,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 568,
+    "val": 212,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 569,
+    "val": 168,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 570,
+    "val": 212,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 571,
+    "val": 211,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 572,
+    "val": 167,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 573,
+    "val": 83,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 574,
+    "val": 211,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 575,
+    "val": 166,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 576,
+    "val": 213,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 577,
+    "val": 210,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 578,
+    "val": 165,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 579,
+    "val": 90,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 580,
+    "val": 210,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 581,
+    "val": 164,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 582,
+    "val": 227,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 583,
+    "val": 209,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 584,
+    "val": 163,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 585,
+    "val": 111,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 586,
+    "val": 209,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 587,
+    "val": 162,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 588,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 589,
+    "val": 208,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 590,
+    "val": 162,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 591,
+    "val": 144,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 592,
+    "val": 208,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 593,
+    "val": 161,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 594,
+    "val": 38,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 595,
+    "val": 208,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 596,
+    "val": 160,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 597,
+    "val": 192,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 598,
+    "val": 207,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 599,
+    "val": 159,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 600,
+    "val": 93,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 601,
+    "val": 207,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 602,
+    "val": 158,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 603,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 604,
+    "val": 206,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 605,
+    "val": 158,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 606,
+    "val": 162,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 607,
+    "val": 206,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 608,
+    "val": 5,
+    "msk": 31,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE",
+    "addr": 512,
+    "val": 157,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 513,
+    "val": 75,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 514,
+    "val": 206,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 515,
+    "val": 156,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 516,
+    "val": 246,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 517,
+    "val": 205,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 518,
+    "val": 156,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 519,
+    "val": 166,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 520,
+    "val": 205,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 521,
+    "val": 155,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 522,
+    "val": 90,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 523,
+    "val": 205,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 524,
+    "val": 155,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 525,
+    "val": 17,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 526,
+    "val": 205,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 527,
+    "val": 154,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 528,
+    "val": 205,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 529,
+    "val": 204,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 530,
+    "val": 153,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 531,
+    "val": 140,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 532,
+    "val": 204,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 533,
+    "val": 153,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 534,
+    "val": 79,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 535,
+    "val": 204,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 536,
+    "val": 153,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 537,
+    "val": 23,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 538,
+    "val": 204,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 539,
+    "val": 152,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 540,
+    "val": 226,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 541,
+    "val": 203,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 542,
+    "val": 152,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 543,
+    "val": 178,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 544,
+    "val": 203,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 545,
+    "val": 151,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 546,
+    "val": 133,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 547,
+    "val": 203,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 548,
+    "val": 151,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 549,
+    "val": 93,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 550,
+    "val": 203,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 551,
+    "val": 151,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 552,
+    "val": 57,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 553,
+    "val": 203,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 554,
+    "val": 151,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 555,
+    "val": 25,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 556,
+    "val": 203,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 557,
+    "val": 150,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 558,
+    "val": 254,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 559,
+    "val": 202,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 560,
+    "val": 150,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 561,
+    "val": 230,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 562,
+    "val": 202,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 563,
+    "val": 150,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 564,
+    "val": 211,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 565,
+    "val": 202,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 566,
+    "val": 150,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 567,
+    "val": 196,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 568,
+    "val": 202,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 569,
+    "val": 150,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 570,
+    "val": 185,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 571,
+    "val": 202,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 572,
+    "val": 150,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 573,
+    "val": 179,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE",
+    "addr": 574,
+    "val": 202,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE_BARRIER",
+    "addr": null,
+    "val": null,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": null
+  },
+  {
+    "type": "WRITE",
+    "addr": 619,
+    "val": 181,
+    "msk": "",
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 618,
+    "val": 0,
+    "msk": 1,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  }
+]
