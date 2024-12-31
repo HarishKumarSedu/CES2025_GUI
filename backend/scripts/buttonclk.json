@@ -1,0 +1,74 @@
+[
+  {
+    "type": "MSK_UPD",
+    "addr": 130,
+    "val": 0,
+    "msk": 1,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 624,
+    "val": 1,
+    "msk": 1,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 130,
+    "val": 0,
+    "msk": 2,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 0,
+    "val": 1,
+    "msk": 1,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "fro enabled"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 22,
+    "val": 1,
+    "msk": 1,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": ""
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 21,
+    "val": 8,
+    "msk": 8,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "pll enable"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 21,
+    "val": 4,
+    "msk": 4,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "pll enable"
+  },
+  {
+    "type": "MSK_UPD",
+    "addr": 133,
+    "val": 0,
+    "msk": 32,
+    "delay_us": 0,
+    "delay_ms": 0,
+    "comment": "mode = manual"
+  }
+]

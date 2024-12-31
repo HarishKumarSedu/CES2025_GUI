@@ -12,7 +12,7 @@ import pandas as pd
 from io import StringIO
 from common_routes import IVM6310_Hap_demo_slaves
 from time import sleep
-from hap import load_pattren_to_hap
+from hap import load_button_powerUp, load_button_clk, load_button_pattern
 
 DEVICE = read_yaml('config/DeviceAddress.yaml')
 
@@ -35,7 +35,9 @@ def Ivm6310_hap_setup():
             #     return jsonify({'success':{'message':'IVM6310 HAP Button demo running','Deviceses':DEVICE.HAP}}),200
             # else:
                 [button]=list(DEVICE.HAP.keys())
-                load_pattren_to_hap(device=device)
+                load_button_powerUp(device=device)
+                load_button_clk(device=device)
+                load_button_pattern(device=device)
                 log.error(f'IVM6310 HAP Button demo running')
                 return jsonify({'success':{'message':'IVM6310 HAP Button demo running','Deviceses':DEVICE.HAP}}),200
                
