@@ -174,3 +174,58 @@ def write_into_slaves(device=EasyMCP2221,scriptPath=""):
                         device_data = [(device_read_data & mask ) | device_data[1] << lsb ]
                         device_data.insert(0,data[0]) # insert the address of the device 
                         slave.write(device_data)
+def write_into_slaves(device=EasyMCP2221,scriptPath=""):
+    # device = get_device() 
+    # audio_slaves = {key:value for key,value in DEVICE.I2C.items() if key  in ['IVM6311_1','IVM6311_2','ADI_1','ADI_2']}
+    
+    if scriptPath:
+        if re.findall(r'\.([a-zA-Z0-9]+)$',scriptPath)[-1] in  ['csv','txt'] :
+            data = pd.read_csv(scriptPath)
+            data.reset_index(inplace=True)
+            for index, row in data.iterrows():
+                # sleep(0.01)
+                if row['Command'] == 'WR-Reg':
+                    device_data = row['DATA'].split('DATA:')[-1].strip()
+                    device_data = [int(i, 16) for i  in device_data.split(' ') ]  if (' ' in device_data)  else [int(device_data,16)]
+                    page=int(row['Page'].split('PAGE:')[-1].strip(), 16)
+                    addr=int(row['ADD'].split('ADD:')[-1].strip(), 16)
+                    sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
+                    # if sad in DEVICE.AUDIO.values():
+                    #     device_data.insert(0,page) # insert the page address 
+                    device_data.insert(0,addr) # put register address at the begining
+                    # print('sad =',hex(sad),'data = ',device_data)
+                    device.I2C_Slave(sad).write(device_data)
+                if row['Command'] == 'WR-bit':
+                    device_data = int(row['DATA'].split('DATA:')[-1].strip(),16)
+                    msb = int(row['MSB'].split('MSB:')[-1].strip(),16)
+                    lsb = int(row['LSB'].split('LSB:')[-1].strip(),16)
+                    addr=int(row['ADD'].split('ADD:')[-1].strip(), 16)
+                    sad=int(row['SAD'].split('SAD:')[-1].strip(), 16)
+                    slave = device.I2C_Slave(sad)
+                    device_read_data=int.from_bytes(slave.read_register(addr),'little')
+                    mask = ~(((1 << msb - lsb + 1)) -1) << lsb
+                    device_data = [(device_read_data & mask ) | device_data << lsb ]
+                    # if sad in DEVICE.AUDIO.values():
+                    #     device_data.insert(0,page) # insert the page address 
+                    device_data.insert(0,addr) # put register address at the begining
+                    # print('sad =',hex(sad),'data = ',device_data)
+                    slave.write(device_data)
+        
+        elif re.findall(r'\.([a-zA-Z0-9]+)$',scriptPath)[-1] == 'json':
+            with open(scriptPath,'r') as file :
+                data = json.load(file)
+                for command in data:
+                    msb = command.get('msb')
+                    msb = command.get('lsb')
+                    sad = command.get('sad')
+                    device_data = command.get('data')
+                    slave = device.I2C_Slave(sad)
+                    if msb == None or lsb == None:
+                        slave.write(device_data)
+                    else:
+                        device_read_data=int.from_bytes(slave.read_register(data[0]),'little')
+                        # device_read_data=0 # debugging line 
+                        mask = ~(((1 << (msb - lsb + 1))) -1) << lsb
+                        device_data = [(device_read_data & mask ) | device_data[1] << lsb ]
+                        device_data.insert(0,data[0]) # insert the address of the device 
+                        slave.write(device_data)

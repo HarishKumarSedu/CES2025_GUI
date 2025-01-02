@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 import re 
 import pandas as pd 
 from io import StringIO
-from common_routes import IVM6310_Hap_demo_slaves
+from common_routes import IVM6310_Hap_demo_slaves, write_into_slaves
 from time import sleep
 from hap import load_button_powerUp, load_button_clk, load_button_pattern
 
@@ -36,6 +36,8 @@ def Ivm6310_hap_setup():
             # else:
                 [button]=list(DEVICE.HAP.keys())
                 load_button_powerUp(device=device)
+                # # write low pass filter
+                # write_into_slaves(device=device, scriptPath='scripts/LP_hapt_patter.csv')
                 load_button_clk(device=device)
                 load_button_pattern(device=device)
                 log.error(f'IVM6310 HAP Button demo running')
