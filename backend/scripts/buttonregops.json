@@ -60,16 +60,16 @@
     "msk": 3,
     "delay_us": 0,
     "delay_ms": 0,
-    "comment": "set ptn_vol_sel to 0 (target_volume)"
+    "comment": "set ptn_vol_sel to 2.5 (target_volume)"
   },
   {
     "type": "WRITE",
     "addr": 616,
-    "val": 192,
+    "val": 197,
     "msk": "",
     "delay_us": 0,
     "delay_ms": 0,
-    "comment": "set ptn_vol_sel to 0 (target_volume)"
+    "comment": "set ptn_vol_sel to 2.5 (target_volume)"
   },
   {
     "type": "MSK_UPD",

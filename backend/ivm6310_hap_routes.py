@@ -35,7 +35,7 @@ def Ivm6310_hap_setup():
             #     return jsonify({'success':{'message':'IVM6310 HAP Button demo running','Deviceses':DEVICE.HAP}}),200
             # else:
                 [button]=list(DEVICE.HAP.keys())
-                load_button_powerUp(device=device)
+                # load_button_powerUp(device=device)
                 # # write low pass filter
                 # write_into_slaves(device=device, scriptPath='scripts/LP_hapt_patter.csv')
                 load_button_clk(device=device)

@@ -34,7 +34,7 @@ def load_button_powerUp(device:EasyMCP2221):
 def load_button_clk(device: EasyMCP2221):
     slave = device.I2C_Slave(SLAVE_ADDR)
     log.info ( f'************************ Clock setup Started ****************** ')
-    with open('scripts/buttonclk.json','r') as file:
+    with open('scripts/power_up_and_clk_config.json','r') as file:
         data = json.load(file)
         for operation in data:
             if operation.get("addr"):
